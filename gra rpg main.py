@@ -6,6 +6,7 @@ przedmioty.punkty = 0
 i = 0
 hajs = 0
 uderz = 1
+
 while i != 1:
         print("wybierz trudnosc")
         print("-"*40)
@@ -852,7 +853,7 @@ def skarbpokoj():
        print(40*"-")
        dotkskarb = input().upper()
        if dotkskarb == 'A': 
-              szansanamimika = randint(1, 100)
+              szansanamimika = randint(1, 1000)
               if szansanamimika == 1:
                      przedmioty.hp = 0
                      if przedmioty.hp <= 0:
@@ -1798,7 +1799,7 @@ def ilepokijakpok():
                                                         print(40*"-")
                                                         sklep()
 # -------------------------------------------------------
-for i in range(20):
+for i in range(30):
     ilepokijakpok()
     if przedmioty.hp <= 0:
       break
