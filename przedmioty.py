@@ -1,3 +1,4 @@
+hajs = 0
 atak = 0
 wiedz = 0
 punkty = 0
@@ -5,6 +6,7 @@ maxmp = 0
 mp = 0
 hp = 0
 maxhp = 0
+atak = 0
 def korwiedz():
        global wiedz 
        global punkty
@@ -33,6 +35,7 @@ def helmman():
        mp += 100
        punkty += 4
        return maxhp, maxmp, hp, mp, punkty
+
 def kulamocy():
        global hp
        global mp
@@ -46,4 +49,11 @@ def kulamocy():
        mp += 30
        atak += 3
        punkty += 5
-       return maxhp, maxmp, hp, mp, punkty, atak
+       return maxhp, maxmp, hp, mp, atak, punkty
+
+def hajsskrzynia():
+       global hajs
+       global punkty
+       hajs += 200
+       punkty += 1
+       return hajs, punkty

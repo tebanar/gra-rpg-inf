@@ -1,4 +1,5 @@
 from random import randint
+
 def boss():
        global hppot
        hppot = randint(200, 250)
@@ -7,6 +8,13 @@ def bossatck():
        global atackpot
        atackpot = randint(20, 25)
        return atackpot
+
+def szlam():
+       global atackpot
+       global hppot
+       atackpot = randint(10, 15)
+       hppot = randint(70, 90)
+       return atackpot, hppot
 
 
 

@@ -1,10 +1,10 @@
 from random import randint
 import potwory
 import przedmioty
+przedmioty.hajs = 0
 jakipot = 0
 przedmioty.punkty = 0
 i = 0
-hajs = 0
 uderz = 1
 
 while i != 1:
@@ -289,8 +289,7 @@ def walkazpot():
        global hp
        global hppot
        global tarczahp
-       if jakipot < 4:
-              jakipot = randint(1,3)
+       jakipot = randint(1,4)
        if jakipot == 1:
               
               potwory.zombie()
@@ -324,7 +323,7 @@ def walkazpot():
                     else: 
                      przedmioty.punkty += 5 
                      print("pokonales zombie")
-                     hajs += randint(25, 40)
+                     przedmioty.hajs += randint(25, 40)
                      print(40*"-")
 
        elif jakipot == 2:
@@ -359,7 +358,7 @@ def walkazpot():
                     else:
                            przedmioty.punkty += 5
                            print("pokonales ducha")
-                           hajs += randint(25, 40)
+                           przedmioty.hajs += randint(25, 40)
                            print(40*"-")
        elif jakipot == 3:
               potwory.goblin()
@@ -393,8 +392,42 @@ def walkazpot():
                     else: 
                             przedmioty.punkty += 5
                             print("pokonales goblina")
-                            hajs += randint(25, 40)
+                            przedmioty.hajs += randint(25, 40)
                             print(40*"-")
+       if jakipot == 4:
+              
+              potwory.szlam()
+              print(f"spotykasz slime, ma on {potwory.hppot} hp i {potwory.atackpot} ataku")
+              print(40*"-")
+              tarczahp = 0
+              while potwory.hppot > 0:
+                    potwory.hppot -= wybatak()
+                    print(40*"-")
+                    if potwory.hppot < 0:
+                           potwory.hppot = 0
+                    if potwory.hppot > 0:
+                        print(f"slime ma jeszcze {potwory.hppot} hp ")
+                        print(40*"-")
+                        if tarczahp > 0:
+                               tarczahp -= potwory.atackpot
+                               if tarczahp < 0:
+                                      przedmioty.hp += tarczahp
+                                      tarczahp = 0
+                        elif tarczahp == 0:
+                               przedmioty.hp -= potwory.atackpot
+                        print(f"slime zadal {potwory.atackpot} obrazen")
+                        print(40*"-")
+                        if przedmioty.hp <= 0:
+                                   return 0
+                        if przedmioty.hp < 0:
+                              przedmioty.hp = 0
+                        print(f"masz jeszcze {przedmioty.hp}/{przedmioty.maxhp} hp, {tarczahp} tarczy i {przedmioty.mp}/{przedmioty.maxmp} mp")
+                        print(40*"-")
+                    else: 
+                     przedmioty.punkty += 5 
+                     print("pokonales slime")
+                     przedmioty.hajs += randint(25, 40)
+                     print(40*"-")
   
 # -------------------------------------------------------
 def ognisko():
@@ -477,7 +510,7 @@ def liczbprzedsklep():
               elif przed2 == 4:
                       print("jest kula mocy")
                       print(40*"-")
-       elif lpok == 3:
+       elif lprzed == 3:
               przed1 = randint(1,4)
               if przed1 == 1:
                      print("jest korona wiedzy")
@@ -535,44 +568,44 @@ def sklep():
        global hajs
        liczbprzedsklep()
        if lprzed == 1:
-              print(f"masz {hajs} hajsu")
+              print(f"masz {przedmioty.hajs} hajsu")
               print("czy kupujesz (100 hajsu)?")
               print(40*"-")
               print("A - tak")
               print("B - nie")
               print(40*"-")
               taka = input().upper()
-              if taka == 'A' and przed1 == 1 and hajs >= 100:
+              if taka == 'A' and przed1 == 1 and przedmioty.hajs >= 100:
                      print("kupujesz korone wiedzy")
                      print(40*"-")
                      przedmioty.korwiedz()
-                     hajs -= 100
-              elif taka == 'A'and przed1 == 1 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'A'and przed1 == 1 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
                      
-              elif taka == 'A' and przed1 == 2 and hajs >= 100:
+              elif taka == 'A' and przed1 == 2 and przedmioty.hajs >= 100:
                      print("kupujesz helm many")
                      print(40*"-")
                      przedmioty.helmman()
-                     hajs -= 100
-              elif taka == 'A'and przed1 == 2 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'A'and przed1 == 2 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
 
-              if taka == 'A' and przed1 == 3 and hajs >= 100:
+              if taka == 'A' and przed1 == 3 and przedmioty.hajs >= 100:
                      print("kupujesz korone wiedzy")
                      print(40*"-")
                      przedmioty.miecz()
-                     hajs -= 100
-              elif taka == 'A'and przed1 == 3 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'A'and przed1 == 3 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              elif taka == 'A' and przed1 == 4 and hajs >= 100:
+              elif taka == 'A' and przed1 == 4 and przedmioty.hajs >= 100:
                      print("kupujesz kule mocy")
                      print(40*"-")
                      przedmioty.kulamocy()
-                     hajs -= 100
-              elif taka == 'A'and przed1 == 4 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'A'and przed1 == 4 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
               elif taka == 'B':
@@ -582,7 +615,7 @@ def sklep():
                      print("nic nie wybrales")
                      return 0
        elif lprzed == 2:
-              print(f"masz {hajs} hajsu")
+              print(f"masz {przedmioty.hajs} hajsu")
               print("co kupujesz (100 hajsu)")
               print(40*"-")
               print("A - kupujesz przedmiot 1")
@@ -591,68 +624,68 @@ def sklep():
 
 
               taka = input().upper()
-              if taka == 'A' and przed1 == 1 and hajs >= 100:
+              if taka == 'A' and przed1 == 1 and przedmioty.hajs >= 100:
                      print("kupujesz korone wiedzy")
                      print(40*"-")
                      przedmioty.korwiedz()
-                     hajs -= 100
-              elif taka == 'A'and przed1 == 1 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'A'and przed1 == 1 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              if taka == 'A' and przed1 == 2 and hajs >= 100:
+              if taka == 'A' and przed1 == 2 and przedmioty.hajs >= 100:
                      print("kupujesz helm many")
                      print(40*"-")
                      przedmioty.helmman()
-                     hajs -= 100
-              elif taka == 'A'and przed1 == 2 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'A'and przed1 == 2 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              if taka == 'A' and przed1 == 3 and hajs >= 100:
+              if taka == 'A' and przed1 == 3 and przedmioty.hajs >= 100:
                      print("miecz")
                      print(40*"-")
                      przedmioty.miecz()
-                     hajs -= 100
-              elif taka == 'A'and przed1 == 3 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'A'and przed1 == 3 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              elif taka == 'A' and przed1 == 4 and hajs >= 100:
+              elif taka == 'A' and przed1 == 4 and przedmioty.hajs >= 100:
                      print("kupujesz kule mocy")
                      print(40*"-")
                      przedmioty.kulamocy()
-                     hajs -= 100
-              elif taka == 'A'and przed1 == 4 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'A'and przed1 == 4 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              if taka == 'B' and przed2 == 1 and hajs >= 100:
+              if taka == 'B' and przed2 == 1 and przedmioty.hajs >= 100:
                      print("kupujesz korone wiedzy")
                      print(40*"-")
                      przedmioty.korwiedz()
-                     hajs -= 100
-              elif taka == 'A'and przed2 == 1 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'A'and przed2 == 1 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              if taka == 'B' and przed2 == 2 and hajs >= 100:
+              if taka == 'B' and przed2 == 2 and przedmioty.hajs >= 100:
                      print("kupujesz helm many")
                      print(40*"-")
                      przedmioty.helmman()
-                     hajs -= 100
-              elif taka == 'B'and przed2 == 2 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'B'and przed2 == 2 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              if taka == 'B' and przed2 == 3 and hajs >= 100:
+              if taka == 'B' and przed2 == 3 and przedmioty.hajs >= 100:
                      print("miecz")
                      print(40*"-")
                      przedmioty.miecz()
-                     hajs -= 100
-              elif taka == 'B'and przed2 == 3 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'B'and przed2 == 3 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              elif taka == 'B' and przed2 == 4 and hajs >= 100:
+              elif taka == 'B' and przed2 == 4 and przedmioty.hajs >= 100:
                      print("kupujesz kule mocy")
                      print(40*"-")
                      przedmioty.kulamocy()
-                     hajs -= 100
-              elif taka == 'B'and przed2 == 4 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'B'and przed2 == 4 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
               elif taka == 'C':
@@ -662,7 +695,7 @@ def sklep():
                      print("nic nie wybrales")
                      return 0
        elif lprzed == 3:
-              print(f"masz {hajs} hajsu")
+              print(f"masz {przedmioty.hajs} hajsu")
               print("co kupujesz (100 hajsu)")
               print(40*"-")
               print("A - kupujesz przedmiot 1")
@@ -672,100 +705,100 @@ def sklep():
 
 
               taka = input().upper()
-              if taka == 'A' and przed1 == 1 and hajs >= 100:
+              if taka == 'A' and przed1 == 1 and przedmioty.hajs >= 100:
                      print("kupujesz korone wiedzy")
                      print(40*"-")
                      przedmioty.korwiedz()
-                     hajs -= 100
-              elif taka == 'A'and przed1 == 1 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'A'and przed1 == 1 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              if taka == 'A' and przed1 == 2 and hajs >= 100:
+              if taka == 'A' and przed1 == 2 and przedmioty.hajs >= 100:
                      print("kupujesz helm many")
                      print(40*"-")
                      przedmioty.helmman()
-                     hajs -= 100
-              elif taka == 'A'and przed1 == 2 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'A'and przed1 == 2 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              if taka == 'A' and przed1 == 3 and hajs >= 100:
+              if taka == 'A' and przed1 == 3 and przedmioty.hajs >= 100:
                      print("miecz")
                      print(40*"-")
                      przedmioty.miecz()
-                     hajs -= 100
-              elif taka == 'A'and przed1 == 3 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'A'and przed1 == 3 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              elif taka == 'A' and przed1 == 4 and hajs >= 100:
+              elif taka == 'A' and przed1 == 4 and przedmioty.hajs >= 100:
                      print("kupujesz kule mocy")
                      print(40*"-")
                      przedmioty.kulamocy()
-                     hajs -= 100
-              elif taka == 'A'and przed1 == 4 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'A'and przed1 == 4 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              if taka == 'B' and przed2 == 1 and hajs >= 100:
+              if taka == 'B' and przed2 == 1 and przedmioty.hajs >= 100:
                      print("kupujesz korone wiedzy")
                      print(40*"-")
                      przedmioty.korwiedz()
-                     hajs -= 100
-              elif taka == 'B'and przed2 == 1 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'B'and przed2 == 1 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              if taka == 'B' and przed2 == 2 and hajs >= 100:
+              if taka == 'B' and przed2 == 2 and przedmioty.hajs >= 100:
                      print("kupujesz helm many")
                      print(40*"-")
                      przedmioty.helmman()
-                     hajs -= 100
-              elif taka == 'B'and przed2 == 2 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'B'and przed2 == 2 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              if taka == 'B' and przed2 == 3 and hajs >= 100:
+              if taka == 'B' and przed2 == 3 and przedmioty.hajs >= 100:
                      print("miecz")
                      print(40*"-")
                      przedmioty.miecz()
-                     hajs -= 100
-              elif taka == 'B'and przed2 == 3 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'B'and przed2 == 3 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              elif taka == 'B' and przed2 == 4 and hajs >= 100:
+              elif taka == 'B' and przed2 == 4 and przedmioty.hajs >= 100:
                      print("kupujesz kule mocy")
                      print(40*"-")
                      przedmioty.kulamocy()
-                     hajs -= 100
-              elif taka == 'B' and przed2 == 4 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'B' and przed2 == 4 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              if taka == 'C' and przed3 == 1 and hajs >= 100:
+              if taka == 'C' and przed3 == 1 and przedmioty.hajs >= 100:
                      print("kupujesz korone wiedzy")
                      print(40*"-")
                      przedmioty.korwiedz()
-                     hajs -= 100
-              elif taka == 'C'and przed3 == 1 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'C'and przed3 == 1 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              if taka == 'C' and przed3 == 2 and hajs >= 100:
+              if taka == 'C' and przed3 == 2 and przedmioty.hajs >= 100:
                      print("kupujesz helm many")
                      print(40*"-")
                      przedmioty.helmman()
-                     hajs -= 100
-              elif taka == 'C'and przed3 == 2 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'C'and przed3 == 2 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              if taka == 'C' and przed3 == 3 and hajs >= 100:
+              if taka == 'C' and przed3 == 3 and przedmioty.hajs >= 100:
                      print("miecz")
                      print(40*"-")
                      przedmioty.miecz()
-                     hajs -= 100
-              elif taka == 'C'and przed3 == 3 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'C'and przed3 == 3 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
-              elif taka == 'C' and przed3 == 4 and hajs >= 100:
+              elif taka == 'C' and przed3 == 4 and przedmioty.hajs >= 100:
                      print("kupujesz kule mocy")
                      print(40*"-")
                      przedmioty.kulamocy()
-                     hajs -= 100
-              elif taka == 'C'and przed3 == 4 and hajs < 100:
+                     przedmioty.hajs -= 100
+              elif taka == 'C'and przed3 == 4 and przedmioty.hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
               elif taka == 'D':
@@ -903,6 +936,7 @@ def event():
                             przedmioty.mp += 10000
                             przedmioty.maxmp += 10000
                             przedmioty.hp -= 20
+                            przedmioty.atak += 100
 
               elif y == 'B':
                      print("nic nie robisz")
@@ -935,7 +969,7 @@ def skarbpokoj():
                             print(40*"-")
                             return 0
               else:
-                     jakiskarb = randint(1,6)
+                     jakiskarb = randint(1,7)
                      if jakiskarb == 1:
                             print("dostales helmet many")
                             print(40*"-")
@@ -955,6 +989,9 @@ def skarbpokoj():
                              print("dostales kule mocy")
                              print(40*"-")
                              przedmioty.kulamocy()
+                     elif jakiskarb == 6:
+                             print("znalazles troche pieniedzy")
+                             przedmioty.hajsskrzynia()
                      else:
                             print("w skrzyni byla pulapka")
                             print(40*"-")
