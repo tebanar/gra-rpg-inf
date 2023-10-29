@@ -33,5 +33,17 @@ def helmman():
        mp += 100
        punkty += 4
        return maxhp, maxmp, hp, mp, punkty
-korwiedz()
-print(wiedz)
+def kulamocy():
+       global hp
+       global mp
+       global maxhp
+       global maxmp
+       global atak
+       global punkty
+       maxhp += 30
+       maxmp += 30
+       hp += 30
+       mp += 30
+       atak += 3
+       punkty += 5
+       return maxhp, maxmp, hp, mp, punkty, atak

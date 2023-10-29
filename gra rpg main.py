@@ -437,7 +437,7 @@ def liczbprzedsklep():
        print(40*"-")
 
        if lprzed == 1:
-              przed1 = randint(1,3)
+              przed1 = randint(1,4)
               if przed1 == 1:
                      print("jest korona wiedzy")
                      print(40*"-")
@@ -447,8 +447,11 @@ def liczbprzedsklep():
               elif przed1 == 3:
                      print("jest miecz")
                      print(40*"-")
+              elif przed1 == 4:
+                      print("jest kula mocy")
+                      print(40*"-")
        if lprzed == 2:
-              przed1 = randint(1,3)
+              przed1 = randint(1,4)
               if przed1 == 1:
                      print("jest korona wiedzy")
                      print(40*"-")
@@ -458,7 +461,10 @@ def liczbprzedsklep():
               elif przed1 == 3:
                      print("jest miecz")
                      print(40*"-")
-              przed2 = randint(1,3)
+              elif przed1 == 4:
+                      print("jest kula mocy")
+                      print(40*"-")
+              przed2 = randint(1,4)
               if przed2 == 1:
                      print("jest korona wiedzy")
                      print(40*"-")
@@ -468,8 +474,11 @@ def liczbprzedsklep():
               elif przed2 == 3:
                      print("jest miecz")
                      print(40*"-")
+              elif przed2 == 4:
+                      print("jest kula mocy")
+                      print(40*"-")
        elif lpok == 3:
-              przed1 = randint(1,3)
+              przed1 = randint(1,4)
               if przed1 == 1:
                      print("jest korona wiedzy")
                      print(40*"-")
@@ -479,7 +488,10 @@ def liczbprzedsklep():
               elif przed1 == 3:
                      print("jest miecz")
                      print(40*"-")
-              przed2 = randint(1,3)
+              elif przed1 == 4:
+                      print("jest kula mocy")
+                      print(40*"-")
+              przed2 = randint(1,4)
               if przed2 == 1:
                      print("jest korona wiedzy")
                      print(40*"-")
@@ -489,7 +501,10 @@ def liczbprzedsklep():
               elif przed2 == 3:
                      print("jest miecz")
                      print(40*"-")
-              przed3 = randint(1,3)
+              elif przed2 == 4:
+                      print("jest kula mocy")
+                      print(40*"-")
+              przed3 = randint(1,4)
               if przed3 == 1:
                      print("jest korona wiedzy")
                      print(40*"-")
@@ -499,6 +514,9 @@ def liczbprzedsklep():
               elif przed3 == 3:
                      print("jest miecz")
                      print(40*"-")
+              elif przed3 == 4:
+                      print("jest kula mocy")
+                      print(40*"-")
 
 def sklep():
        global punkty
@@ -549,6 +567,14 @@ def sklep():
               elif taka == 'A'and przed1 == 3 and hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
+              elif taka == 'A' and przed1 == 4 and hajs >= 100:
+                     print("kupujesz kule mocy")
+                     print(40*"-")
+                     przedmioty.kulamocy()
+                     hajs -= 100
+              elif taka == 'A'and przed1 == 4 and hajs < 100:
+                     print("nie masz wystarczajaco pieniedzy")
+
               elif taka == 'B':
                      print("nic nie kupujesz")
                      return 0
@@ -589,6 +615,14 @@ def sklep():
               elif taka == 'A'and przed1 == 3 and hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
+              elif taka == 'A' and przed1 == 4 and hajs >= 100:
+                     print("kupujesz kule mocy")
+                     print(40*"-")
+                     przedmioty.kulamocy()
+                     hajs -= 100
+              elif taka == 'A'and przed1 == 4 and hajs < 100:
+                     print("nie masz wystarczajaco pieniedzy")
+
               if taka == 'B' and przed2 == 1 and hajs >= 100:
                      print("kupujesz korone wiedzy")
                      print(40*"-")
@@ -612,6 +646,15 @@ def sklep():
                      hajs -= 100
               elif taka == 'B'and przed2 == 3 and hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
+
+              elif taka == 'B' and przed2 == 4 and hajs >= 100:
+                     print("kupujesz kule mocy")
+                     print(40*"-")
+                     przedmioty.kulamocy()
+                     hajs -= 100
+              elif taka == 'B'and przed2 == 4 and hajs < 100:
+                     print("nie masz wystarczajaco pieniedzy")
+
               elif taka == 'C':
                      print("nic nie kupujesz")
                      return 0
@@ -653,6 +696,14 @@ def sklep():
               elif taka == 'A'and przed1 == 3 and hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
+              elif taka == 'A' and przed1 == 4 and hajs >= 100:
+                     print("kupujesz kule mocy")
+                     print(40*"-")
+                     przedmioty.kulamocy()
+                     hajs -= 100
+              elif taka == 'A'and przed1 == 4 and hajs < 100:
+                     print("nie masz wystarczajaco pieniedzy")
+
               if taka == 'B' and przed2 == 1 and hajs >= 100:
                      print("kupujesz korone wiedzy")
                      print(40*"-")
@@ -677,6 +728,14 @@ def sklep():
               elif taka == 'B'and przed2 == 3 and hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
 
+              elif taka == 'B' and przed2 == 4 and hajs >= 100:
+                     print("kupujesz kule mocy")
+                     print(40*"-")
+                     przedmioty.kulamocy()
+                     hajs -= 100
+              elif taka == 'B' and przed2 == 4 and hajs < 100:
+                     print("nie masz wystarczajaco pieniedzy")
+
               if taka == 'C' and przed3 == 1 and hajs >= 100:
                      print("kupujesz korone wiedzy")
                      print(40*"-")
@@ -698,8 +757,17 @@ def sklep():
                      print(40*"-")
                      przedmioty.miecz()
                      hajs -= 100
-              elif taka == 'C'and przed2 == 3 and hajs < 100:
+              elif taka == 'C'and przed3 == 3 and hajs < 100:
                      print("nie masz wystarczajaco pieniedzy")
+
+              elif taka == 'C' and przed3 == 4 and hajs >= 100:
+                     print("kupujesz kule mocy")
+                     print(40*"-")
+                     przedmioty.kulamocy()
+                     hajs -= 100
+              elif taka == 'C'and przed3 == 4 and hajs < 100:
+                     print("nie masz wystarczajaco pieniedzy")
+
               elif taka == 'D':
                      print("nic nie kupujesz")
                      return 0
@@ -804,27 +872,32 @@ def event():
               y = input().upper()
               if y == 'A':
                      x = randint(1,100)
-                     if x >= 1 and x <= 30:
+                     if x >= 1 and x <= 25:
                             print("dostajesz helm many")
                             przedmioty.helmman()
                             przedmioty.hp -= 20
                             if przedmioty.hp < 0:
                                     przedmioty.hp = 1
 
-                     elif x >= 31 and x <= 60:
+                     elif x >= 26 and x <= 50:
                             print("dostajesz korone wiedzy")
                             przedmioty.korwiedz()
                             przedmioty.hp -= 20
                             if przedmioty.hp < 0:
                                     przedmioty.hp = 1
-                     elif x >= 61 and x <= 90:
+                     elif x >= 51 and x <= 75:
                             print("dostajesz miecz")
                             przedmioty.miecz()
                             przedmioty.hp -= 20
                             if przedmioty.hp < 0:
                                     przedmioty.hp = 1
-                     elif x >= 91 and x <= 100:
-                            print("dostajesz kule mocy")
+                     elif x >= 76 and x <= 94:
+                             print("dostajesz kule mocy")
+                             przedmioty.kulamocy()
+                             if przedmioty.hp < 0:
+                                    przedmioty.hp = 1
+                     elif x >= 95 and x <= 100:
+                            print("dostajesz god mode")
                             przedmioty.maxhp += 10000
                             przedmioty.hp += 10000
                             przedmioty.mp += 10000
@@ -862,7 +935,7 @@ def skarbpokoj():
                             print(40*"-")
                             return 0
               else:
-                     jakiskarb = randint(1,5)
+                     jakiskarb = randint(1,6)
                      if jakiskarb == 1:
                             print("dostales helmet many")
                             print(40*"-")
@@ -878,6 +951,10 @@ def skarbpokoj():
                      elif jakiskarb == 4:
                             print("nic nie bylo w skrzyni")
                             print(40*"-")
+                     elif jakiskarb == 5:
+                             print("dostales kule mocy")
+                             print(40*"-")
+                             przedmioty.kulamocy()
                      else:
                             print("w skrzyni byla pulapka")
                             print(40*"-")
