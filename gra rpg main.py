@@ -755,7 +755,7 @@ def event():
               print("znalazles sklep")
               print(40*"-")
               sklep()
-       elif jakievent == 7 or jakievent == 8 or jakievent == 9:
+       elif jakievent >= 7 and jakievent <= 9:
               print("znalazles obelisk")
               print(40*"-")
               x = randint(1,3)
@@ -1161,16 +1161,20 @@ def ilepokijakpok():
                             
                             print("po odpoczynu idziesz dalej")
                             print(40*"-")
-                            if jakipokoj1 == 1:
+                            if jakipokoj1 >= 1 and jakipokoj1 <= 2:
                                    event()
                                    if przedmioty.hp <= 0:
                                           return 0
-                            elif jakipokoj1 == 2:
+                            elif jakipokoj1 >= 3 and jakipokoj1 <= 4:
                                    skarbpokoj()
                                    if przedmioty.hp <= 0:
                                           return 0
-                            elif jakipokoj1 == 3:
+                            elif jakipokoj1 >= 5 and jakipokoj1 <= 9:
                                    walkazpot()
+                                   if przedmioty.hp <= 0:
+                                          return 0
+                            elif jakipokoj1 == 10:
+                                   sklep()
                                    if przedmioty.hp <= 0:
                                           return 0
 
@@ -1514,7 +1518,7 @@ def ilepokijakpok():
                                           print("wchodisz do sklepu")
                                           print(40*"-")
                                           sklep()
-                     if taka == 'B' and jakipokoj2 >= 1 and jakipokoj2 <= 2:
+                     elif taka == 'B' and jakipokoj2 >= 1 and jakipokoj2 <= 2:
                                           print("wchodzisz do dzrwi z znakiem zapytania")
                                           print(40*"-")
                                           event()
@@ -1536,7 +1540,7 @@ def ilepokijakpok():
                                           print("wchodisz do sklepu")
                                           print(40*"-")
                                           sklep()
-                     if taka == 'C' and jakipokoj3 >= 1 and jakipokoj2 <= 2:
+                     elif taka == 'C' and jakipokoj3 >= 1 and jakipokoj3 <= 2:
                                           print("wchodzisz do dzrwi z znakiem zapytania")
                                           print(40*"-")
                                           event()
@@ -1805,4 +1809,5 @@ if przedmioty.hp > 0:
        print("-"*40)
 if przedmioty.hp <= 0:
       print("game over")
+      print(f"PUNKTY - {przedmioty.punkty} ")
       print("-"*40)
