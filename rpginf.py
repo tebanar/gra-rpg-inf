@@ -58,7 +58,7 @@ while i != 1:
        print("wybierz postac")
        print("A = wojownik")
        print("B = mag")
-       print("C = zwiadowca")
+       print("C = paladyn")
        print("-"*40)
        postac = input().upper()
 
@@ -86,7 +86,6 @@ while i != 1:
               i += 1
        if postac == 'C':
               def atack():
-                     global atak
                      return randint(7+przedmioty.atak, 13+przedmioty.atak)
               przedmioty.maxhp = 100 + dodmaxhp
               przedmioty.maxmp = 70 + dodmaxmp
@@ -103,14 +102,14 @@ while i != 1:
 przedmioty.hp = przedmioty.maxhp
 przedmioty.mp = przedmioty.maxmp
 def dostdomagii():
-    global wiedz
+
     global tarcza
     global magicznypocisk
     global blyskawica
     global meteor
     global potkihpcheck
     global potkimpcheck
-    global punkty
+
     potkihpcheck = 0
     potkimpcheck = 0
 
@@ -132,7 +131,7 @@ def dostdomagii():
     if przedmioty.wiedz >= 4:
            przedmioty.punkty += 1
 def meteordef():
-       global mp
+
        if przedmioty.mp < 70:
         print("-"*40)
         print("Nie masz wystarczającej ilości many!")
@@ -141,19 +140,19 @@ def meteordef():
        return randint(100, 150)
 
 def tarczadef():
-       global mp
+
        global tarczahp
-       if przedmioty.mp < 30:
+       if przedmioty.mp < 40:
         print("-"*40)
         print("Nie masz wystarczajacej ilości many!")
         return 0
        tarczahp = 0
-       przedmioty.mp -= 30
-       tarczahp += 20
+       przedmioty.mp -= 40
+       tarczahp += 50
        return 0
 
 def magicznypociskdef():
-       global mp
+
        if przedmioty.mp < 10:
         print("-"*40)
         print("Nie masz wystarczającej ilości many!")
@@ -162,7 +161,7 @@ def magicznypociskdef():
        return randint(20, 30)
 
 def blyskawicadef():
-       global mp
+
        if przedmioty.mp < 30:
         print("-"*40)
         print("Nie masz wystarczającej ilości many!")
@@ -183,8 +182,6 @@ def wybatak():
        global magicznypocisk
        global blyskawica
        global meteor
-       global hp
-       global mp
        global tarczahp
        dostdomagii()
        print("co chcesz zrobić")
@@ -206,12 +203,12 @@ def wybatak():
        if wybat == 'A':
               return atack()
        if wybat == 'B' and tarcza == 1:
-              if przedmioty.mp < 30:
+              if przedmioty.mp < 40:
                      print("-"*40)
                      print("Nie masz wystarczajacej ilości many!")
                      return 0
-              przedmioty.mp -= 30
-              tarczahp = 20
+              przedmioty.mp -= 40
+              tarczahp = 50
               return 0
        elif wybat == 'B' and tarcza == 0:
               return 0
@@ -254,14 +251,12 @@ def wybatak():
        # -------------------------------------------------------
 
 def walkazboss():
-              global punkty
-              global hp
-              global hppot
               global tarczahp
               potwory.boss()
               potwory.bossatck()
               tarczahp = 0
               print(f"spotykasz bossa, ma on {potwory.hppot} hp i {potwory.atackpot} ataku")
+              print(f"masz {przedmioty.hp}/{przedmioty.maxhp} hp, {przedmioty.mp}/{przedmioty.maxmp} mp, {potkihp} potek hp i {potkimp} potek mp")
               print(40*"-")
               tarczahp = 0
               while potwory.hppot > 0:
@@ -285,7 +280,7 @@ def walkazboss():
                                    return 0
                         if przedmioty.hp < 0:
                               przedmioty.hp = 0
-                        print(f"masz jeszcze {przedmioty.hp}/{przedmioty.maxhp} hp, {tarczahp} tarczy i {przedmioty.mp}/{przedmioty.maxmp} mp")
+                        print(f"masz jeszcze {przedmioty.hp}/{przedmioty.maxhp} hp, {tarczahp} tarczy, {przedmioty.mp}/{przedmioty.maxmp} mp, {potkihp} potek hp i {potkimp} potek mp")
                         print(40*"-")
                     else: 
                      przedmioty.punkty += 30 
@@ -294,11 +289,7 @@ def walkazboss():
 
 
 def walkazpot():
-       global hajs
-       global punkty
        global jakipot
-       global hp
-       global hppot
        global tarczahp
        jakipot = randint(1,4)
        if jakipot == 1:
@@ -306,6 +297,7 @@ def walkazpot():
               potwory.zombie()
               potwory.zombieatack()
               print(f"spotykasz zombie, ma on {potwory.hppot} hp i {potwory.atackpot} ataku")
+              print(f"masz {przedmioty.hp}/{przedmioty.maxhp} hp, {przedmioty.mp}/{przedmioty.maxmp} mp, {potkihp} potek hp i {potkimp} potek mp ")
               print(40*"-")
               tarczahp = 0
               while potwory.hppot > 0:
@@ -329,7 +321,7 @@ def walkazpot():
                                    return 0
                         if przedmioty.hp < 0:
                               przedmioty.hp = 0
-                        print(f"masz jeszcze {przedmioty.hp}/{przedmioty.maxhp} hp, {tarczahp} tarczy i {przedmioty.mp}/{przedmioty.maxmp} mp")
+                        print(f"masz jeszcze {przedmioty.hp}/{przedmioty.maxhp} hp, {tarczahp} tarczy, {przedmioty.mp}/{przedmioty.maxmp} mp, {potkihp} potek hp i {potkimp} potek mp")
                         print(40*"-")
                     else: 
                      przedmioty.punkty += 5 
@@ -342,6 +334,7 @@ def walkazpot():
               potwory.duchatack()
               tarczahp = 0
               print(f"spotykasz ducha, ma on {potwory.hppot} hp i {potwory.atackpot} ataku")
+              print(f"masz {przedmioty.hp}/{przedmioty.maxhp} hp, {przedmioty.mp}/{przedmioty.maxmp} mp, {potkihp} potek hp i {potkimp} potek mp")
               print(40*"-")
               while potwory.hppot > 0:
                     potwory.hppot -= wybatak()
@@ -364,7 +357,7 @@ def walkazpot():
                                    return 0
                         if przedmioty.hp < 0:
                               przedmioty.hp = 0
-                        print(f"masz jeszcze {przedmioty.hp}/{przedmioty.maxhp} hp, {tarczahp} tarczy i {przedmioty.mp}/{przedmioty.maxmp} mp")
+                        print(f"masz jeszcze {przedmioty.hp}/{przedmioty.maxhp} hp, {tarczahp} tarczy, {przedmioty.mp}/{przedmioty.maxmp} mp, {potkihp} potek hp i {potkimp} potek mp")
                         print(40*"-")
                     else:
                            przedmioty.punkty += 5
@@ -376,6 +369,7 @@ def walkazpot():
               potwory.goblinatack()
               tarczahp = 0
               print(f"spotykasz goblina, ma on {potwory.hppot} hp i {potwory.atackpot} ataku")
+              print(f"masz {przedmioty.hp}/{przedmioty.maxhp} hp, {przedmioty.mp}/{przedmioty.maxmp} mp, {potkihp} potek hp i {potkimp} potek mp")
               print(40*"-")
               while potwory.hppot > 0:
                     potwory.hppot -= wybatak()
@@ -398,7 +392,7 @@ def walkazpot():
                                    return 0
                         if przedmioty.hp < 0:
                               przedmioty.hp = 0
-                        print(f"masz jeszcze {przedmioty.hp}/{przedmioty.maxhp} hp, {tarczahp} tarczy i {przedmioty.mp}/{przedmioty.maxmp} mp")
+                        print(f"masz jeszcze {przedmioty.hp}/{przedmioty.maxhp} hp, {tarczahp} tarczy, {przedmioty.mp}/{przedmioty.maxmp} mp, {potkihp} potek hp i {potkimp} potek mp")
                         print(40*"-")
                     else: 
                             przedmioty.punkty += 5
@@ -409,6 +403,7 @@ def walkazpot():
               
               potwory.szlam()
               print(f"spotykasz slime, ma on {potwory.hppot} hp i {potwory.atackpot} ataku")
+              print(f"masz {przedmioty.hp}/{przedmioty.maxhp} hp, {przedmioty.mp}/{przedmioty.maxmp} mp, {potkihp} potek hp i {potkimp} potek mp")
               print(40*"-")
               tarczahp = 0
               while potwory.hppot > 0:
@@ -432,7 +427,7 @@ def walkazpot():
                                    return 0
                         if przedmioty.hp < 0:
                               przedmioty.hp = 0
-                        print(f"masz jeszcze {przedmioty.hp}/{przedmioty.maxhp} hp, {tarczahp} tarczy i {przedmioty.mp}/{przedmioty.maxmp} mp")
+                        print(f"masz jeszcze {przedmioty.hp}/{przedmioty.maxhp} hp,, {przedmioty.mp}/{przedmioty.maxmp} mp, {potkihp} potek hp i {potkimp} potek mp")
                         print(40*"-")
                     else: 
                      przedmioty.punkty += 5 
@@ -442,8 +437,6 @@ def walkazpot():
   
 # -------------------------------------------------------
 def ognisko():
-       global hp
-       global mp
        global potkihp
        global potkimp
        print("odpoczywasz i dostajesz 50 hp, 50 mp, 1 potke hp i 1 potke mp")
@@ -458,11 +451,6 @@ def ognisko():
        potkimp += 1
 
 def magicznykamien():
-       global atak 
-       global maxhp
-       global maxmp
-       global mp
-       global hp
        przedmioty.atak += 5
        przedmioty.maxhp += 20
        przedmioty.hp += 20
@@ -563,20 +551,14 @@ def liczbprzedsklep():
                       print(40*"-")
 
 def sklep():
-       global punkty
-       global maxmp
-       global maxhp
+
        global dotkskarb
-       global mp
-       global hp
-       global atak
-       global wiedz
        global taka
        global lprzed
        global przed1
        global przed2
        global przed3
-       global hajs
+
        liczbprzedsklep()
        if lprzed == 1:
                      while True:
@@ -879,18 +861,10 @@ def sklep():
 
 # ---------------------------------------------------------------------------------
               
-def event():
-       
+def event():      
        global jakievent
-       global hp
-       global punkty
        global x
        global y
-       global atak
-       global maxmp
-       global mp
-       global maxhp
-       global hp
 
        jakievent = randint(1,10)
        if jakievent == 1:
@@ -960,6 +934,8 @@ def event():
                      if y == 'A':
                             przedmioty.maxhp += 20
                             przedmioty.atak -= 1
+                            if przedmioty.atak <= 0:
+                                    przedmioty.atak = 1
                      elif y == 'B':
                             print("nie dotykasz obelisku")
        elif jakievent == 10:
@@ -973,25 +949,25 @@ def event():
                             print("dostajesz helm many")
                             przedmioty.helmman()
                             przedmioty.hp -= 20
-                            if przedmioty.hp < 0:
+                            if przedmioty.hp <= 0:
                                     przedmioty.hp = 1
 
                      elif x >= 26 and x <= 50:
                             print("dostajesz korone wiedzy")
                             przedmioty.korwiedz()
                             przedmioty.hp -= 20
-                            if przedmioty.hp < 0:
+                            if przedmioty.hp <= 0:
                                     przedmioty.hp = 1
                      elif x >= 51 and x <= 75:
                             print("dostajesz miecz")
                             przedmioty.miecz()
                             przedmioty.hp -= 20
-                            if przedmioty.hp < 0:
+                            if przedmioty.hp <= 0:
                                     przedmioty.hp = 1
                      elif x >= 76 and x <= 94:
                              print("dostajesz kule mocy")
                              przedmioty.kulamocy()
-                             if przedmioty.hp < 0:
+                             if przedmioty.hp <= 0:
                                     przedmioty.hp = 1
                      elif x >= 95 and x <= 100:
                             print("dostajesz god mode")
@@ -1007,16 +983,9 @@ def event():
 
 
 def skarbpokoj():
-       global punkty
-       global maxmp
-       global maxhp
        global dotkskarb
        global szansanamimika
-       global mp
-       global hp
        global jakiskarb
-       global atak
-       global wiedz
        while True:
               print("otworzyc skrzynie?")
               print(40*"-")
@@ -1202,6 +1171,8 @@ def ilepokijakpok():
        lijakpok()
        while True:
               if lpok == 1:
+                     print(f"masz {przedmioty.hp}/{przedmioty.maxhp} hp , {przedmioty.mp}/{przedmioty.maxmp} mp, {przedmioty.wiedz} wiedzy, {przedmioty.hajs} hajsu, {potkihp} potek hp i {potkimp} potek mp")
+                     print(40*"-")
                      print("czy wchodzisz do nich?")
                      print(40*"-")
                      print("A - tak")
@@ -1230,6 +1201,8 @@ def ilepokijakpok():
                             break
 
                      elif taka == 'B':
+                            print(f"masz {przedmioty.hp}/{przedmioty.maxhp} hp , {przedmioty.mp}/{przedmioty.maxmp} mp, {przedmioty.wiedz} wiedzy, {przedmioty.hajs} hajsu, {potkihp} potek hp i {potkimp} potek mp")
+                            print(40*"-")
                             print("co robisz")
                             print(40*"-")
                             print("A - idziesz dalej")
@@ -1302,6 +1275,8 @@ def ilepokijakpok():
 
 
               elif lpok == 2:
+                     print(f"masz {przedmioty.hp}/{przedmioty.maxhp} hp , {przedmioty.mp}/{przedmioty.maxmp} mp, {przedmioty.wiedz} wiedzy, {przedmioty.hajs} hajsu, {potkihp} potek hp i {potkimp} potek mp")
+                     print(40*"-")
                      print("co robisz")
                      print(40*"-")
                      print("A - wchodzisz do 1 drzwi")
@@ -1386,6 +1361,8 @@ def ilepokijakpok():
                                    continue
                                    
               elif lpok == 3:
+                            print(f"masz {przedmioty.hp}/{przedmioty.maxhp} hp , {przedmioty.mp}/{przedmioty.maxmp} mp, {przedmioty.wiedz} wiedzy, {przedmioty.hajs} hajsu, {potkihp} potek hp i {potkimp} potek mp")
+                            print(40*"-")
                             print("co robisz?")
                             print(40*"-")
                             print("A - wchodzisz do 1 drzwi")
