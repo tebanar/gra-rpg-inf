@@ -52,42 +52,53 @@ while i != 1:
                 continue
 # -------------------------------------------------------
     
-print("wybierz postac")
-print("A = wojownik")
-print("B = mag")
-print("C = zwiadowca")
-print("-"*40)
-postac = input().upper()
 
-print(40*"-")
+i = 0
+while i != 1:
+       print("wybierz postac")
+       print("A = wojownik")
+       print("B = mag")
+       print("C = zwiadowca")
+       print("-"*40)
+       postac = input().upper()
 
-if postac == 'A':
-    def atack():
-           global atak
-           return randint(15+przedmioty.atak, 20+przedmioty.atak)
-    przedmioty.maxhp = 150 + dodmaxhp
-    przedmioty.maxmp = 50 + dodmaxmp
-    przedmioty.wiedz = 0
-    potkihp = 3 + potkihptr
-    potkimp = 1 + potkimptr
-if postac == 'B':
-    def atack():
-           global atak
-           return randint(3+przedmioty.atak, 6+przedmioty.atak)
-    przedmioty.maxhp = 70 + dodmaxhp
-    przedmioty.maxmp = 150 + dodmaxmp
-    przedmioty.wiedz = 2
-    potkihp = 1 + potkihptr
-    potkimp = 3 + potkimptr
-if postac == 'C':
-    def atack():
-           global atak
-           return randint(7+przedmioty.atak, 13+przedmioty.atak)
-    przedmioty.maxhp = 100 + dodmaxhp
-    przedmioty.maxmp = 70 + dodmaxmp
-    przedmioty.wiedz = 1
-    potkihp = 2 + potkihptr
-    potkimp = 2 + potkimptr
+       print(40*"-")
+
+       if postac == 'A':
+              def atack():
+                     global atak
+                     return randint(15+przedmioty.atak, 20+przedmioty.atak)
+              przedmioty.maxhp = 150 + dodmaxhp
+              przedmioty.maxmp = 50 + dodmaxmp
+              przedmioty.wiedz = 0
+              potkihp = 3 + potkihptr
+              potkimp = 1 + potkimptr
+              i += 1
+       if postac == 'B':
+              def atack():
+                     global atak
+                     return randint(3+przedmioty.atak, 6+przedmioty.atak)
+              przedmioty.maxhp = 70 + dodmaxhp
+              przedmioty.maxmp = 150 + dodmaxmp
+              przedmioty.wiedz = 2
+              potkihp = 1 + potkihptr
+              potkimp = 3 + potkimptr
+              i += 1
+       if postac == 'C':
+              def atack():
+                     global atak
+                     return randint(7+przedmioty.atak, 13+przedmioty.atak)
+              przedmioty.maxhp = 100 + dodmaxhp
+              przedmioty.maxmp = 70 + dodmaxmp
+              przedmioty.wiedz = 1
+              potkihp = 2 + potkihptr
+              potkimp = 2 + potkimptr
+              i += 1
+       else:
+              print("brak takiej opcji")
+              print(40*"-")
+              continue
+               
 # -------------------------------------------------------
 przedmioty.hp = przedmioty.maxhp
 przedmioty.mp = przedmioty.maxmp
@@ -568,132 +579,159 @@ def sklep():
        global hajs
        liczbprzedsklep()
        if lprzed == 1:
-              print(f"masz {przedmioty.hajs} hajsu")
-              print("czy kupujesz (100 hajsu)?")
-              print(40*"-")
-              print("A - tak")
-              print("B - nie")
-              print(40*"-")
-              taka = input().upper()
-              if taka == 'A' and przed1 == 1 and przedmioty.hajs >= 100:
-                     print("kupujesz korone wiedzy")
-                     print(40*"-")
-                     przedmioty.korwiedz()
-                     przedmioty.hajs -= 100
-              elif taka == 'A'and przed1 == 1 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
-                     
-              elif taka == 'A' and przed1 == 2 and przedmioty.hajs >= 100:
-                     print("kupujesz helm many")
-                     print(40*"-")
-                     przedmioty.helmman()
-                     przedmioty.hajs -= 100
-              elif taka == 'A'and przed1 == 2 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     while True:
+                            print(f"masz {przedmioty.hajs} hajsu")
+                            print("czy kupujesz (100 hajsu)?")
+                            print(40*"-")
+                            print("A - tak")
+                            print("B - nie")
+                            print(40*"-")
+                            taka = input().upper()
+                            if taka == 'A' and przed1 == 1 and przedmioty.hajs >= 100:
+                                   print("kupujesz korone wiedzy")
+                                   print(40*"-")
+                                   przedmioty.korwiedz()
+                                   przedmioty.hajs -= 100
+                                   break
+                            elif taka == 'A'and przed1 == 1 and przedmioty.hajs < 100:
+                                   print("nie masz wystarczajaco pieniedzy")
+                                   break
+                                   
+                            elif taka == 'A' and przed1 == 2 and przedmioty.hajs >= 100:
+                                   print("kupujesz helm many")
+                                   print(40*"-")
+                                   przedmioty.helmman()
+                                   przedmioty.hajs -= 100
+                                   break
+                            elif taka == 'A'and przed1 == 2 and przedmioty.hajs < 100:
+                                   print("nie masz wystarczajaco pieniedzy")
+                                   break
 
 
-              if taka == 'A' and przed1 == 3 and przedmioty.hajs >= 100:
-                     print("kupujesz korone wiedzy")
-                     print(40*"-")
-                     przedmioty.miecz()
-                     przedmioty.hajs -= 100
-              elif taka == 'A'and przed1 == 3 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                            if taka == 'A' and przed1 == 3 and przedmioty.hajs >= 100:
+                                   print("kupujesz korone wiedzy")
+                                   print(40*"-")
+                                   przedmioty.miecz()
+                                   przedmioty.hajs -= 100
+                                   break
+                            elif taka == 'A'and przed1 == 3 and przedmioty.hajs < 100:
+                                   print("nie masz wystarczajaco pieniedzy")
+                                   break
 
-              elif taka == 'A' and przed1 == 4 and przedmioty.hajs >= 100:
-                     print("kupujesz kule mocy")
-                     print(40*"-")
-                     przedmioty.kulamocy()
-                     przedmioty.hajs -= 100
-              elif taka == 'A'and przed1 == 4 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                            elif taka == 'A' and przed1 == 4 and przedmioty.hajs >= 100:
+                                   print("kupujesz kule mocy")
+                                   print(40*"-")
+                                   przedmioty.kulamocy()
+                                   przedmioty.hajs -= 100
+                                   break
+                            elif taka == 'A'and przed1 == 4 and przedmioty.hajs < 100:
+                                   print("nie masz wystarczajaco pieniedzy")
+                                   break
 
-              elif taka == 'B':
-                     print("nic nie kupujesz")
-                     return 0
-              else:
-                     print("nic nie wybrales")
-                     return 0
+                            elif taka == 'B':
+                                   print("nic nie kupujesz")
+                                   break
+                            else:
+                                   print("nic nie wybrales")
+                                   continue
+
        elif lprzed == 2:
-              print(f"masz {przedmioty.hajs} hajsu")
-              print("co kupujesz (100 hajsu)")
-              print(40*"-")
-              print("A - kupujesz przedmiot 1")
-              print("B - kupujesz przedmiot 2")
-              print("C - nic nie kupujesz")
-
-
-              taka = input().upper()
-              if taka == 'A' and przed1 == 1 and przedmioty.hajs >= 100:
-                     print("kupujesz korone wiedzy")
+              while True:
+                     print(f"masz {przedmioty.hajs} hajsu")
+                     print("co kupujesz (100 hajsu)")
                      print(40*"-")
-                     przedmioty.korwiedz()
-                     przedmioty.hajs -= 100
-              elif taka == 'A'and przed1 == 1 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     print("A - kupujesz przedmiot 1")
+                     print("B - kupujesz przedmiot 2")
+                     print("C - nic nie kupujesz")
 
-              if taka == 'A' and przed1 == 2 and przedmioty.hajs >= 100:
-                     print("kupujesz helm many")
-                     print(40*"-")
-                     przedmioty.helmman()
-                     przedmioty.hajs -= 100
-              elif taka == 'A'and przed1 == 2 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
 
-              if taka == 'A' and przed1 == 3 and przedmioty.hajs >= 100:
-                     print("miecz")
-                     print(40*"-")
-                     przedmioty.miecz()
-                     przedmioty.hajs -= 100
-              elif taka == 'A'and przed1 == 3 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     taka = input().upper()
+                     if taka == 'A' and przed1 == 1 and przedmioty.hajs >= 100:
+                            print("kupujesz korone wiedzy")
+                            print(40*"-")
+                            przedmioty.korwiedz()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'A'and przed1 == 1 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              elif taka == 'A' and przed1 == 4 and przedmioty.hajs >= 100:
-                     print("kupujesz kule mocy")
-                     print(40*"-")
-                     przedmioty.kulamocy()
-                     przedmioty.hajs -= 100
-              elif taka == 'A'and przed1 == 4 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     if taka == 'A' and przed1 == 2 and przedmioty.hajs >= 100:
+                            print("kupujesz helm many")
+                            print(40*"-")
+                            przedmioty.helmman()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'A'and przed1 == 2 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              if taka == 'B' and przed2 == 1 and przedmioty.hajs >= 100:
-                     print("kupujesz korone wiedzy")
-                     print(40*"-")
-                     przedmioty.korwiedz()
-                     przedmioty.hajs -= 100
-              elif taka == 'A'and przed2 == 1 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     if taka == 'A' and przed1 == 3 and przedmioty.hajs >= 100:
+                            print("miecz")
+                            print(40*"-")
+                            przedmioty.miecz()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'A'and przed1 == 3 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              if taka == 'B' and przed2 == 2 and przedmioty.hajs >= 100:
-                     print("kupujesz helm many")
-                     print(40*"-")
-                     przedmioty.helmman()
-                     przedmioty.hajs -= 100
-              elif taka == 'B'and przed2 == 2 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     elif taka == 'A' and przed1 == 4 and przedmioty.hajs >= 100:
+                            print("kupujesz kule mocy")
+                            print(40*"-")
+                            przedmioty.kulamocy()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'A'and przed1 == 4 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              if taka == 'B' and przed2 == 3 and przedmioty.hajs >= 100:
-                     print("miecz")
-                     print(40*"-")
-                     przedmioty.miecz()
-                     przedmioty.hajs -= 100
-              elif taka == 'B'and przed2 == 3 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     if taka == 'B' and przed2 == 1 and przedmioty.hajs >= 100:
+                            print("kupujesz korone wiedzy")
+                            print(40*"-")
+                            przedmioty.korwiedz()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'A'and przed2 == 1 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              elif taka == 'B' and przed2 == 4 and przedmioty.hajs >= 100:
-                     print("kupujesz kule mocy")
-                     print(40*"-")
-                     przedmioty.kulamocy()
-                     przedmioty.hajs -= 100
-              elif taka == 'B'and przed2 == 4 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     if taka == 'B' and przed2 == 2 and przedmioty.hajs >= 100:
+                            print("kupujesz helm many")
+                            print(40*"-")
+                            przedmioty.helmman()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'B'and przed2 == 2 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              elif taka == 'C':
-                     print("nic nie kupujesz")
-                     return 0
-              else:
-                     print("nic nie wybrales")
-                     return 0
+                     if taka == 'B' and przed2 == 3 and przedmioty.hajs >= 100:
+                            print("miecz")
+                            print(40*"-")
+                            przedmioty.miecz()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'B'and przed2 == 3 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
+
+                     elif taka == 'B' and przed2 == 4 and przedmioty.hajs >= 100:
+                            print("kupujesz kule mocy")
+                            print(40*"-")
+                            przedmioty.kulamocy()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'B'and przed2 == 4 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
+
+                     elif taka == 'C':
+                            print("nic nie kupujesz")
+                            break
+                     else:
+                            print("nic nie wybrales")
+                            continue
        elif lprzed == 3:
               print(f"masz {przedmioty.hajs} hajsu")
               print("co kupujesz (100 hajsu)")
@@ -703,110 +741,136 @@ def sklep():
               print("C - kupujesz przedmiot 3")
               print("D - nic nie kupujesz")
 
+              while True:
 
-              taka = input().upper()
-              if taka == 'A' and przed1 == 1 and przedmioty.hajs >= 100:
-                     print("kupujesz korone wiedzy")
-                     print(40*"-")
-                     przedmioty.korwiedz()
-                     przedmioty.hajs -= 100
-              elif taka == 'A'and przed1 == 1 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
 
-              if taka == 'A' and przed1 == 2 and przedmioty.hajs >= 100:
-                     print("kupujesz helm many")
-                     print(40*"-")
-                     przedmioty.helmman()
-                     przedmioty.hajs -= 100
-              elif taka == 'A'and przed1 == 2 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     taka = input().upper()
+                     if taka == 'A' and przed1 == 1 and przedmioty.hajs >= 100:
+                            print("kupujesz korone wiedzy")
+                            print(40*"-")
+                            przedmioty.korwiedz()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'A'and przed1 == 1 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              if taka == 'A' and przed1 == 3 and przedmioty.hajs >= 100:
-                     print("miecz")
-                     print(40*"-")
-                     przedmioty.miecz()
-                     przedmioty.hajs -= 100
-              elif taka == 'A'and przed1 == 3 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     if taka == 'A' and przed1 == 2 and przedmioty.hajs >= 100:
+                            print("kupujesz helm many")
+                            print(40*"-")
+                            przedmioty.helmman()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'A'and przed1 == 2 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              elif taka == 'A' and przed1 == 4 and przedmioty.hajs >= 100:
-                     print("kupujesz kule mocy")
-                     print(40*"-")
-                     przedmioty.kulamocy()
-                     przedmioty.hajs -= 100
-              elif taka == 'A'and przed1 == 4 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     if taka == 'A' and przed1 == 3 and przedmioty.hajs >= 100:
+                            print("miecz")
+                            print(40*"-")
+                            przedmioty.miecz()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'A'and przed1 == 3 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              if taka == 'B' and przed2 == 1 and przedmioty.hajs >= 100:
-                     print("kupujesz korone wiedzy")
-                     print(40*"-")
-                     przedmioty.korwiedz()
-                     przedmioty.hajs -= 100
-              elif taka == 'B'and przed2 == 1 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     elif taka == 'A' and przed1 == 4 and przedmioty.hajs >= 100:
+                            print("kupujesz kule mocy")
+                            print(40*"-")
+                            przedmioty.kulamocy()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'A'and przed1 == 4 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              if taka == 'B' and przed2 == 2 and przedmioty.hajs >= 100:
-                     print("kupujesz helm many")
-                     print(40*"-")
-                     przedmioty.helmman()
-                     przedmioty.hajs -= 100
-              elif taka == 'B'and przed2 == 2 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     if taka == 'B' and przed2 == 1 and przedmioty.hajs >= 100:
+                            print("kupujesz korone wiedzy")
+                            print(40*"-")
+                            przedmioty.korwiedz()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'B'and przed2 == 1 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              if taka == 'B' and przed2 == 3 and przedmioty.hajs >= 100:
-                     print("miecz")
-                     print(40*"-")
-                     przedmioty.miecz()
-                     przedmioty.hajs -= 100
-              elif taka == 'B'and przed2 == 3 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     if taka == 'B' and przed2 == 2 and przedmioty.hajs >= 100:
+                            print("kupujesz helm many")
+                            print(40*"-")
+                            przedmioty.helmman()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'B'and przed2 == 2 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              elif taka == 'B' and przed2 == 4 and przedmioty.hajs >= 100:
-                     print("kupujesz kule mocy")
-                     print(40*"-")
-                     przedmioty.kulamocy()
-                     przedmioty.hajs -= 100
-              elif taka == 'B' and przed2 == 4 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     if taka == 'B' and przed2 == 3 and przedmioty.hajs >= 100:
+                            print("miecz")
+                            print(40*"-")
+                            przedmioty.miecz()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'B'and przed2 == 3 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              if taka == 'C' and przed3 == 1 and przedmioty.hajs >= 100:
-                     print("kupujesz korone wiedzy")
-                     print(40*"-")
-                     przedmioty.korwiedz()
-                     przedmioty.hajs -= 100
-              elif taka == 'C'and przed3 == 1 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     elif taka == 'B' and przed2 == 4 and przedmioty.hajs >= 100:
+                            print("kupujesz kule mocy")
+                            print(40*"-")
+                            przedmioty.kulamocy()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'B' and przed2 == 4 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              if taka == 'C' and przed3 == 2 and przedmioty.hajs >= 100:
-                     print("kupujesz helm many")
-                     print(40*"-")
-                     przedmioty.helmman()
-                     przedmioty.hajs -= 100
-              elif taka == 'C'and przed3 == 2 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     if taka == 'C' and przed3 == 1 and przedmioty.hajs >= 100:
+                            print("kupujesz korone wiedzy")
+                            print(40*"-")
+                            przedmioty.korwiedz()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'C'and przed3 == 1 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              if taka == 'C' and przed3 == 3 and przedmioty.hajs >= 100:
-                     print("miecz")
-                     print(40*"-")
-                     przedmioty.miecz()
-                     przedmioty.hajs -= 100
-              elif taka == 'C'and przed3 == 3 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     if taka == 'C' and przed3 == 2 and przedmioty.hajs >= 100:
+                            print("kupujesz helm many")
+                            print(40*"-")
+                            przedmioty.helmman()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'C'and przed3 == 2 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              elif taka == 'C' and przed3 == 4 and przedmioty.hajs >= 100:
-                     print("kupujesz kule mocy")
-                     print(40*"-")
-                     przedmioty.kulamocy()
-                     przedmioty.hajs -= 100
-              elif taka == 'C'and przed3 == 4 and przedmioty.hajs < 100:
-                     print("nie masz wystarczajaco pieniedzy")
+                     if taka == 'C' and przed3 == 3 and przedmioty.hajs >= 100:
+                            print("miecz")
+                            print(40*"-")
+                            przedmioty.miecz()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'C'and przed3 == 3 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
 
-              elif taka == 'D':
-                     print("nic nie kupujesz")
-                     return 0
-              else:
-                     print("nic nie wybrales")
-                     return 0
+                     elif taka == 'C' and przed3 == 4 and przedmioty.hajs >= 100:
+                            print("kupujesz kule mocy")
+                            print(40*"-")
+                            przedmioty.kulamocy()
+                            przedmioty.hajs -= 100
+                            break
+                     elif taka == 'C'and przed3 == 4 and przedmioty.hajs < 100:
+                            print("nie masz wystarczajaco pieniedzy")
+                            break
+
+                     elif taka == 'D':
+                            print("nic nie kupujesz")
+                            break
+                     else:
+                            print("nic nie wybrales")
+                            continue
                      
               
 
@@ -953,59 +1017,67 @@ def skarbpokoj():
        global jakiskarb
        global atak
        global wiedz
-       print("otworzyc skrzynie?")
-       print(40*"-")
-       print("A - tak")
-       print("B - nie")
-       print(40*"-")
-       dotkskarb = input().upper()
-       if dotkskarb == 'A': 
-              szansanamimika = randint(1, 1000)
-              if szansanamimika == 1:
-                     przedmioty.hp = 0
-                     if przedmioty.hp <= 0:
-                     
-                            print("to byl mimik i cie zjadl")
-                            print(40*"-")
-                            return 0
-              else:
-                     jakiskarb = randint(1,7)
-                     if jakiskarb == 1:
-                            print("dostales helmet many")
-                            print(40*"-")
-                            przedmioty.helmman()
-                     elif jakiskarb == 2:
-                            print("dostales miecz")
-                            print(40*"-")
-                            przedmioty.miecz()
-                     elif jakiskarb == 3:
-                            print("dostales korone wiedzy")
-                            print(40*"-")
-                            przedmioty.korwiedz()
-                     elif jakiskarb == 4:
-                            print("nic nie bylo w skrzyni")
-                            print(40*"-")
-                     elif jakiskarb == 5:
-                             print("dostales kule mocy")
-                             print(40*"-")
-                             przedmioty.kulamocy()
-                     elif jakiskarb == 6:
-                             print("znalazles troche pieniedzy")
-                             przedmioty.hajsskrzynia()
-                     else:
-                            print("w skrzyni byla pulapka")
-                            print(40*"-")
-                            przedmioty.hp -= 10
+       while True:
+              print("otworzyc skrzynie?")
+              print(40*"-")
+              print("A - tak")
+              print("B - nie")
+              print(40*"-")
+              dotkskarb = input().upper()
+              if dotkskarb == 'A': 
+                     szansanamimika = randint(1, 1000)
+                     if szansanamimika == 1:
+                            przedmioty.hp = 0
                             if przedmioty.hp <= 0:
-                                  przedmioty.hp = 1
-       elif dotkskarb == 'B':
-              print("nie dotykasz skrzyni")
-              print(40*"-")
-              return 0
-       else:
-              print("Nie wybrano akcji")
-              print(40*"-")
-              return 0
+                            
+                                   print("to byl mimik i cie zjadl")
+                                   print(40*"-")
+                                   break
+                     else:
+                            jakiskarb = randint(1,7)
+                            if jakiskarb == 1:
+                                   print("dostales helmet many")
+                                   print(40*"-")
+                                   przedmioty.helmman()
+                                   break
+                            elif jakiskarb == 2:
+                                   print("dostales miecz")
+                                   print(40*"-")
+                                   przedmioty.miecz()
+                                   break
+                            elif jakiskarb == 3:
+                                   print("dostales korone wiedzy")
+                                   print(40*"-")
+                                   przedmioty.korwiedz()
+                                   break
+                            elif jakiskarb == 4:
+                                   print("nic nie bylo w skrzyni")
+                                   print(40*"-")
+                                   break
+                            elif jakiskarb == 5:
+                                   print("dostales kule mocy")
+                                   print(40*"-")
+                                   przedmioty.kulamocy()
+                                   break
+                            elif jakiskarb == 6:
+                                   print("znalazles troche pieniedzy")
+                                   przedmioty.hajsskrzynia()
+                                   break
+                            else:
+                                   print("w skrzyni byla pulapka")
+                                   print(40*"-")
+                                   przedmioty.hp -= 10
+                                   if przedmioty.hp <= 0:
+                                          przedmioty.hp = 1
+                                   break
+              elif dotkskarb == 'B':
+                     print("nie dotykasz skrzyni")
+                     print(40*"-")
+                     break
+              else:
+                     print("nie ma takiej opcji")
+                     print(40*"-")
+                     continue
 
 # -------------------------------------------------------
 
@@ -1128,790 +1200,299 @@ def ilepokijakpok():
 
 
        lijakpok()
-       if lpok == 1:
-              print("czy wchodzisz do nich?")
-              print(40*"-")
-              print("A - tak")
-              print("B - nie")
-              print(40*"-")
-              taka = input().upper()
-              if taka == 'A' and jakipokoj1 >= 1 and jakipokoj1 <= 2:
-                     print("wchodzisz do dzrwi z znakiem zapytania")
+       while True:
+              if lpok == 1:
+                     print("czy wchodzisz do nich?")
                      print(40*"-")
-                     event()
-                     if przedmioty.hp <= 0:
-                            return 0
-              elif taka == 'A' and jakipokoj1 >= 3 and jakipokoj1 <= 4:
-                     print("wchodzisz do pokoju z znakiem skarbu")
+                     print("A - tak")
+                     print("B - nie")
                      print(40*"-")
-                     skarbpokoj()
-                     if przedmioty.hp <= 0:
-                            return 0
-              elif taka == 'A' and jakipokoj1 >= 5 and jakipokoj1 <= 9:
-                     print("wchodisz do pokoju z czaszka")
-                     print(40*"-")
-                     walkazpot()
-                     if przedmioty.hp <= 0:
-                            return 0
-              elif taka == 'A' and jakipokoj1 == 10 :
-                     print("wchodisz do sklepu")
-                     print(40*"-")
-                     sklep()
-
-              elif taka == 'B':
-                     print("co robisz")
-                     print(40*"-")
-                     print("A - idziesz dalej")
-                     print("B - odpoczywasz (20 procent szansy na atak potwora)")
-                     if potkihp > 0:
-                            print("H - pijesz potke hp")
-                     if potkimp > 0:
-                            print("M - pijesz potke mp")
                      taka = input().upper()
                      if taka == 'A' and jakipokoj1 >= 1 and jakipokoj1 <= 2:
                             print("wchodzisz do dzrwi z znakiem zapytania")
                             print(40*"-")
                             event()
-                            if przedmioty.hp <= 0:
-                                   return 0
+                            break
                      elif taka == 'A' and jakipokoj1 >= 3 and jakipokoj1 <= 4:
                             print("wchodzisz do pokoju z znakiem skarbu")
                             print(40*"-")
                             skarbpokoj()
-                            if przedmioty.hp <= 0:
-                                   return 0
+                            break
                      elif taka == 'A' and jakipokoj1 >= 5 and jakipokoj1 <= 9:
                             print("wchodisz do pokoju z czaszka")
                             print(40*"-")
                             walkazpot()
-                            if przedmioty.hp <= 0:
-                                   return 0
+                            break
                      elif taka == 'A' and jakipokoj1 == 10 :
                             print("wchodisz do sklepu")
                             print(40*"-")
                             sklep()
+                            break
+
                      elif taka == 'B':
-                            print("odpoczywasz (+10 hp, +10 mp)")
-                            print(40*"-")
-                            przedmioty.hp += 10
-                            przedmioty.mp += 10
-                            if przedmioty.hp > przedmioty.maxhp:
-                                   przedmioty.hp = przedmioty.maxhp
-                            if przedmioty.mp > przedmioty.maxmp:
-                                   przedmioty.mp = przedmioty.maxmp
-                            czypotworodp = randint(1,5)
-                            if czypotworodp == 1:
-                                   walkazpot()
-                                   if przedmioty.hp <= 0:
-                                          return 0
-
-                            
-                            print("po odpoczynu idziesz dalej")
-                            print(40*"-")
-                            if jakipokoj1 == 1:
-                                   event()
-                                   if przedmioty.hp <= 0:
-                                          return 0
-                            elif jakipokoj1 == 2:
-                                   skarbpokoj()
-                                   if przedmioty.hp <= 0:
-                                          return 0
-                            elif jakipokoj1 == 3:
-                                   walkazpot()
-                                   if przedmioty.hp <= 0:
-                                          return 0
-
-
-                     elif taka == 'H' and potkihp > 0:
-                            przedmioty.hp += 40
-                            if przedmioty.hp > przedmioty.maxhp:
-                                   przedmioty.hp = przedmioty.maxhp
-                            potkihp -= 1
-                     print("co robisz")
-                     print(40*"-")
-                     print("A - idziesz dalej")
-                     print("B - odpoczywasz (20 procent szansy na atak potwora)")
-                     if potkihp > 0:
-                            print("H - pijesz potke hp")
-                     if potkimp > 0:
-                            print("M - pijesz potke mp")
-                     taka = input().upper()
-                     if taka == 'A' and jakipokoj1 >= 1 and jakipokoj1 <= 2:
-                            print("wchodzisz do dzrwi z znakiem zapytania")
-                            print(40*"-")
-                            event()
-                            if przedmioty.hp <= 0:
-                                   return 0
-                     elif taka == 'A' and jakipokoj1 >= 3 and jakipokoj1 <= 4:
-                            print("wchodzisz do pokoju z znakiem skarbu")
-                            print(40*"-")
-                            skarbpokoj()
-                            if przedmioty.hp <= 0:
-                                   return 0
-                     elif taka == 'A' and jakipokoj1 >= 5 and jakipokoj1 <= 9:
-                            print("wchodisz do pokoju z czaszka")
-                            print(40*"-")
-                            walkazpot()
-                            if przedmioty.hp <= 0:
-                                   return 0
-                     elif taka == 'A' and jakipokoj1 == 10 :
-                            print("wchodisz do sklepu")
-                            print(40*"-")
-                            sklep()
-                     elif taka == 'B':
-                            print("odpoczywasz (+10 hp, +10 mp)")
-                            print(40*"-")
-                            przedmioty.hp += 10
-                            przedmioty.mp += 10
-                            if przedmioty.hp > przedmioty.maxhp:
-                                   przedmioty.hp = przedmioty.maxhp
-                            if przedmioty.mp > przedmioty.maxmp:
-                                   przedmioty.mp = przedmioty.maxmp
-                            czypotworodp = randint(1,5)
-                            if czypotworodp == 1:
-                                   walkazpot()
-                                   if przedmioty.hp <= 0:
-                                          return 0
-
-                            
-                            print("po odpoczynu idziesz dalej")
-                            print(40*"-")
-                            if jakipokoj1 >= 1 and jakipokoj1 <= 2:
-                                   event()
-                                   if przedmioty.hp <= 0:
-                                          return 0
-                            elif jakipokoj1 >= 3 and jakipokoj1 <= 4:
-                                   skarbpokoj()
-                                   if przedmioty.hp <= 0:
-                                          return 0
-                            elif jakipokoj1 >= 5 and jakipokoj1 <= 9:
-                                   walkazpot()
-                                   if przedmioty.hp <= 0:
-                                          return 0
-                            elif jakipokoj1 == 10:
-                                   sklep()
-                                   if przedmioty.hp <= 0:
-                                          return 0
-
-                     elif taka == 'M' and potkimp >0:
-                            przedmioty.mp += 70
-                            if przedmioty.mp > przedmioty.maxmp:
-                                   przedmioty.mp = przedmioty.maxmp
-                            potkimp -= 1
                             print("co robisz")
-                     print(40*"-")
-                     print("A - idziesz dalej")
-                     print("B - odpoczywasz (20 procent szansy na atak potwora)")
-                     if potkihp > 0:
-                            print("H - pijesz potke hp")
-                     if potkimp > 0:
-                            print("M - pijesz potke mp")
-                     taka = input().upper()
-                     if taka == 'A' and jakipokoj1 >= 1 and jakipokoj1 <= 2:
-                            print("wchodzisz do dzrwi z znakiem zapytania")
                             print(40*"-")
-                            event()
-                            if przedmioty.hp <= 0:
-                                   return 0
-                     elif taka == 'A' and jakipokoj1 >= 3 and jakipokoj1 <= 4:
-                            print("wchodzisz do pokoju z znakiem skarbu")
-                            print(40*"-")
-                            skarbpokoj()
-                            if przedmioty.hp <= 0:
-                                   return 0
-                     elif taka == 'A' and jakipokoj1 >= 5 and jakipokoj1 <= 9:
-                            print("wchodisz do pokoju z czaszka")
-                            print(40*"-")
-                            walkazpot()
-                            if przedmioty.hp <= 0:
-                                   return 0
-                     elif taka == 'A' and jakipokoj1 == 10 :
-                            print("wchodisz do sklepu")
-                            print(40*"-")
-                            sklep()
-                     elif taka == 'B':
-                            print("odpoczywasz (+10 hp, +10 mp)")
-                            print(40*"-")
-                            przedmioty.hp += 10
-                            przedmioty.mp += 10
-                            if przedmioty.hp > przedmioty.maxhp:
-                                   przedmioty.hp = przedmioty.maxhp
-                            if przedmioty.mp > przedmioty.maxmp:
-                                   przedmioty.mp = przedmioty.maxmp
-                            czypotworodp = randint(1,5)
-                            if czypotworodp == 1:
-                                   walkazpot()
-                                   if przedmioty.hp <= 0:
-                                          return 0
-
-                            
-                            print("po odpoczynu idziesz dalej")
-                            print(40*"-")
-                            if jakipokoj1 >= 1 and jakipokoj1 <= 2:
+                            print("A - idziesz dalej")
+                            print("B - odpoczywasz (20 procent szansy na atak potwora)")
+                            if potkihp > 0:
+                                   print("H - pijesz potke hp")
+                            if potkimp > 0:
+                                   print("M - pijesz potke mp")
+                            taka = input().upper()
+                            if taka == 'A' and jakipokoj1 >= 1 and jakipokoj1 <= 2:
+                                   print("wchodzisz do dzrwi z znakiem zapytania")
+                                   print(40*"-")
                                    event()
-                                   if przedmioty.hp <= 0:
-                                          return 0
-                            elif jakipokoj1 >= 3 and jakipokoj1 <= 4:
+                                   break
+                            elif taka == 'A' and jakipokoj1 >= 3 and jakipokoj1 <= 4:
+                                   print("wchodzisz do pokoju z znakiem skarbu")
+                                   print(40*"-")
                                    skarbpokoj()
-                                   if przedmioty.hp <= 0:
-                                          return 0
-                            elif jakipokoj1 >= 5 and jakipokoj1 <= 9:
+                                   break
+                            elif taka == 'A' and jakipokoj1 >= 5 and jakipokoj1 <= 9:
+                                   print("wchodisz do pokoju z czaszka")
+                                   print(40*"-")
                                    walkazpot()
-                                   if przedmioty.hp <= 0:
-                                          return 0
-                            elif jakipokoj1 == 10:
+                                   break
+                            elif taka == 'A' and jakipokoj1 == 10 :
+                                   print("wchodisz do sklepu")
+                                   print(40*"-")
                                    sklep()
-                                   if przedmioty.hp <= 0:
-                                          return 0
-
-
-
-
-
-
-
-       elif lpok == 2:
-              print("co robisz")
-              print(40*"-")
-              print("A - wchodzisz do 1 drzwi")
-              print("B - wchodzisz do 2 drzwi")
-              print("C - odpoczywasz (20 procent szansy na atak potwora)")
-              if potkihp > 0:
-                            print("H - pijesz potke hp")
-              if potkimp > 0:
-                     print("M - pijesz potke mp")
-
-              taka = input().upper()
-              if taka == 'A' and jakipokoj1 >= 1 and jakipokoj1 <= 2:
-                            print("wchodzisz do dzrwi z znakiem zapytania")
-                            print(40*"-")
-                            event()
-                            if przedmioty.hp <= 0:
-                                   return 0
-              elif taka == 'A' and jakipokoj1 >= 3 and jakipokoj1 <= 4:
-                            print("wchodzisz do pokoju z znakiem skarbu")
-                            print(40*"-")
-                            skarbpokoj()
-                            if przedmioty.hp <= 0:
-                                   return 0
-              elif taka == 'A' and jakipokoj1 >= 5 and jakipokoj1 <= 9:
-                            print("wchodisz do pokoju z czaszka")
-                            print(40*"-")
-                            walkazpot()
-                            if przedmioty.hp <= 0:
-                                   return 0
-              elif taka == 'A' and jakipokoj1 == 10 :
-                            print("wchodisz do sklepu")
-                            print(40*"-")
-                            sklep()
-              if taka == 'B' and jakipokoj2 >= 1 and jakipokoj2 <= 2:
-                            print("wchodzisz do dzrwi z znakiem zapytania")
-                            print(40*"-")
-                            event()
-                            if przedmioty.hp <= 0:
-                                   return 0
-              elif taka == 'B' and jakipokoj2 >= 3 and jakipokoj2 <= 4:
-                            print("wchodzisz do pokoju z znakiem skarbu")
-                            print(40*"-")
-                            skarbpokoj()
-                            if przedmioty.hp <= 0:
-                                   return 0
-              elif taka == 'B' and jakipokoj2 >= 5 and jakipokoj2 <= 9:
-                            print("wchodisz do pokoju z czaszka")
-                            print(40*"-")
-                            walkazpot()
-                            if przedmioty.hp <= 0:
-                                   return 0
-              elif taka == 'B' and jakipokoj2 == 10 :
-                            print("wchodisz do sklepu")
-                            print(40*"-")
-                            sklep()
-              if taka == 'C':
-                            print("odpoczywasz (+10 hp, +10 mp)")
-                            print(40*"-")
-                            czypotworodp = randint(1,5)
-                            if czypotworodp == 1:
-                                   walkazpot()
-                                   if przedmioty.hp <= 0:
-                                          return 0
-                            przedmioty.hp += 10
-                            przedmioty.mp += 10
-                            if przedmioty.hp > przedmioty.maxhp:
-                                   przedmioty.hp = przedmioty.maxhp
-                            if przedmioty.mp > przedmioty.maxmp:
-                                   przedmioty.mp = przedmioty.maxmp
-                            print("do ktorych drzwi wchodzisz?")
-                            print(40*"-")
-                            print("A - 1")
-                            print("B - 2")
-                            taka = input().upper()
-                            if taka == 'A' and jakipokoj1 >= 1 and jakipokoj1 <= 2:
-                                          print("wchodzisz do dzrwi z znakiem zapytania")
-                                          print(40*"-")
-                                          event()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'A' and jakipokoj1 >= 3 and jakipokoj1 <= 4:
-                                          print("wchodzisz do pokoju z znakiem skarbu")
-                                          print(40*"-")
-                                          skarbpokoj()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'A' and jakipokoj1 >= 5 and jakipokoj1 <= 9:
-                                          print("wchodisz do pokoju z czaszka")
-                                          print(40*"-")
-                                          walkazpot()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'A' and jakipokoj1 == 10 :
-                                          print("wchodisz do sklepu")
-                                          print(40*"-")
-                                          sklep()
-                            if taka == 'B' and jakipokoj2 >= 1 and jakipokoj2 <= 2:
-                                          print("wchodzisz do dzrwi z znakiem zapytania")
-                                          print(40*"-")
-                                          event()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'B' and jakipokoj2 >= 3 and jakipokoj2 <= 4:
-                                          print("wchodzisz do pokoju z znakiem skarbu")
-                                          print(40*"-")
-                                          skarbpokoj()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'B' and jakipokoj2 >= 5 and jakipokoj2 <= 9:
-                                          print("wchodisz do pokoju z czaszka")
-                                          print(40*"-")
-                                          walkazpot()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'B' and jakipokoj2 == 10 :
-                                          print("wchodisz do sklepu")
-                                          print(40*"-")
-                                          sklep()
-
-              elif taka == 'H' and potkihp > 0:
-                            przedmioty.hp += 40
-                            if przedmioty.hp > przedmioty.maxhp:
-                                   przedmioty.hp = przedmioty.maxhp
-                            potkihp -= 1
-                            print("do ktorych drzwi wchodzisz?")
-                            print(40*"-")
-                            print("A - 1")
-                            print("B - 2")
-                            taka = input().upper()
-                            if taka == 'A' and jakipokoj1 >= 1 and jakipokoj1 <= 2:
-                                          print("wchodzisz do dzrwi z znakiem zapytania")
-                                          print(40*"-")
-                                          event()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'A' and jakipokoj1 >= 3 and jakipokoj1 <= 4:
-                                          print("wchodzisz do pokoju z znakiem skarbu")
-                                          print(40*"-")
-                                          skarbpokoj()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'A' and jakipokoj1 >= 5 and jakipokoj1 <= 9:
-                                          print("wchodisz do pokoju z czaszka")
-                                          print(40*"-")
-                                          walkazpot()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'A' and jakipokoj1 == 10 :
-                                          print("wchodisz do sklepu")
-                                          print(40*"-")
-                                          sklep()
-                            if taka == 'B' and jakipokoj2 >= 1 and jakipokoj2 <= 2:
-                                          print("wchodzisz do dzrwi z znakiem zapytania")
-                                          print(40*"-")
-                                          event()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'B' and jakipokoj2 >= 3 and jakipokoj2 <= 4:
-                                          print("wchodzisz do pokoju z znakiem skarbu")
-                                          print(40*"-")
-                                          skarbpokoj()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'B' and jakipokoj2 >= 5 and jakipokoj2 <= 9:
-                                          print("wchodisz do pokoju z czaszka")
-                                          print(40*"-")
-                                          walkazpot()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'B' and jakipokoj2 == 10 :
-                                          print("wchodisz do sklepu")
-                                          print(40*"-")
-                                          sklep()
-
-              elif taka == 'M' and potkimp > 0:
-                            przedmioty.mp += 70
-                            if przedmioty.mp > przedmioty.maxmp:
-                                   przedmioty.mp = przedmioty.maxmp
-                            potkimp -= 1
-                            print("do ktorych drzwi wchodzisz?")
-                            print(40*"-")
-                            print("A - 1")
-                            print("B - 2")
-                            taka = input().upper()
-                            if taka == 'A' and jakipokoj1 >= 1 and jakipokoj1 <= 2:
-                                          print("wchodzisz do dzrwi z znakiem zapytania")
-                                          print(40*"-")
-                                          event()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'A' and jakipokoj1 >= 3 and jakipokoj1 <= 4:
-                                          print("wchodzisz do pokoju z znakiem skarbu")
-                                          print(40*"-")
-                                          skarbpokoj()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'A' and jakipokoj1 >= 5 and jakipokoj1 <= 9:
-                                          print("wchodisz do pokoju z czaszka")
-                                          print(40*"-")
-                                          walkazpot()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'A' and jakipokoj1 == 10 :
-                                          print("wchodisz do sklepu")
-                                          print(40*"-")
-                                          sklep()
-                            if taka == 'B' and jakipokoj2 >= 1 and jakipokoj2 <= 2:
-                                          print("wchodzisz do dzrwi z znakiem zapytania")
-                                          print(40*"-")
-                                          event()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'B' and jakipokoj2 >= 3 and jakipokoj2 <= 4:
-                                          print("wchodzisz do pokoju z znakiem skarbu")
-                                          print(40*"-")
-                                          skarbpokoj()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'B' and jakipokoj2 >= 5 and jakipokoj2 <= 9:
-                                          print("wchodisz do pokoju z czaszka")
-                                          print(40*"-")
-                                          walkazpot()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                            elif taka == 'B' and jakipokoj2 == 10 :
-                                          print("wchodisz do sklepu")
-                                          print(40*"-")
-                                          sklep()
-       elif lpok == 3:
-                     print("co robisz?")
-                     print(40*"-")
-                     print("A - wchodzisz do 1 drzwi")
-                     print("B - wchodzisz do 2 drzwi")
-                     print("C - wchodzisz do 3 drzwi")
-                     print("D - odpoczywasz (20 procent szansy na atak potwora)")
-                     if potkihp > 0:
-                            print("H - pijesz potke hp")
-                     if potkimp > 0:
-                            print("M - pijesz potke mp")
-                     taka = input().upper()
-                     if taka == 'A' and jakipokoj1 >= 1 and jakipokoj1 <= 2:
-                                          print("wchodzisz do dzrwi z znakiem zapytania")
-                                          print(40*"-")
-                                          event()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                     elif taka == 'A' and jakipokoj1 >= 3 and jakipokoj1 <= 4:
-                                          print("wchodzisz do pokoju z znakiem skarbu")
-                                          print(40*"-")
-                                          skarbpokoj()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                     elif taka == 'A' and jakipokoj1 >= 5 and jakipokoj1 <= 9:
-                                          print("wchodisz do pokoju z czaszka")
-                                          print(40*"-")
-                                          walkazpot()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                     elif taka == 'A' and jakipokoj1 == 10 :
-                                          print("wchodisz do sklepu")
-                                          print(40*"-")
-                                          sklep()
-                     elif taka == 'B' and jakipokoj2 >= 1 and jakipokoj2 <= 2:
-                                          print("wchodzisz do dzrwi z znakiem zapytania")
-                                          print(40*"-")
-                                          event()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                     elif taka == 'B' and jakipokoj2 >= 3 and jakipokoj2 <= 4:
-                                          print("wchodzisz do pokoju z znakiem skarbu")
-                                          print(40*"-")
-                                          skarbpokoj()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                     elif taka == 'B' and jakipokoj2 >= 5 and jakipokoj2 <= 9:
-                                          print("wchodisz do pokoju z czaszka")
-                                          print(40*"-")
-                                          walkazpot()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                     elif taka == 'B' and jakipokoj2 == 10 :
-                                          print("wchodisz do sklepu")
-                                          print(40*"-")
-                                          sklep()
-                     elif taka == 'C' and jakipokoj3 >= 1 and jakipokoj3 <= 2:
-                                          print("wchodzisz do dzrwi z znakiem zapytania")
-                                          print(40*"-")
-                                          event()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                     elif taka == 'C' and jakipokoj3 >= 3 and jakipokoj3 <= 4:
-                                          print("wchodzisz do pokoju z znakiem skarbu")
-                                          print(40*"-")
-                                          skarbpokoj()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                     elif taka == 'C' and jakipokoj3 >= 5 and jakipokoj3 <= 9:
-                                          print("wchodisz do pokoju z czaszka")
-                                          print(40*"-")
-                                          walkazpot()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
-                     elif taka == 'C' and jakipokoj3 == 10 :
-                                          print("wchodisz do sklepu")
-                                          print(40*"-")
-                                          sklep()
-                     
-                     elif taka == 'D':
+                                   break
+                            elif taka == 'B':
                                    print("odpoczywasz (+10 hp, +10 mp)")
                                    print(40*"-")
-                                   czypotworodp = randint(1,5)
-                                   if czypotworodp == 1:
-                                          walkazpot()
-                                          if przedmioty.hp <= 0:
-                                                 return 0
                                    przedmioty.hp += 10
                                    przedmioty.mp += 10
                                    if przedmioty.hp > przedmioty.maxhp:
                                           przedmioty.hp = przedmioty.maxhp
                                    if przedmioty.mp > przedmioty.maxmp:
                                           przedmioty.mp = przedmioty.maxmp
-                                   print("do ktorych drzwi wchodzisz?")
+                                   czypotworodp = randint(1,5)
+                                   if czypotworodp == 1:
+                                          walkazpot()
+                                          if przedmioty.hp <= 0:
+                                                 break
+                                   continue
+
+
+                                   
+
+
+                            elif taka == 'H' and potkihp > 0:
+                                   przedmioty.hp += 40
+                                   if przedmioty.hp > przedmioty.maxhp:
+                                          przedmioty.hp = przedmioty.maxhp
+                                   potkihp -= 1
+                                   continue
+                            
+
+                            elif taka == 'M' and potkimp >0:
+                                   przedmioty.mp += 70
+                                   if przedmioty.mp > przedmioty.maxmp:
+                                          przedmioty.mp = przedmioty.maxmp
+                                   potkimp -= 1
+                                   continue
+
+
+
+
+
+
+
+
+              elif lpok == 2:
+                     print("co robisz")
+                     print(40*"-")
+                     print("A - wchodzisz do 1 drzwi")
+                     print("B - wchodzisz do 2 drzwi")
+                     print("C - odpoczywasz (20 procent szansy na atak potwora)")
+                     if potkihp > 0:
+                                   print("H - pijesz potke hp")
+                     if potkimp > 0:
+                            print("M - pijesz potke mp")
+
+                     taka = input().upper()
+                     if taka == 'A' and jakipokoj1 >= 1 and jakipokoj1 <= 2:
+                                   print("wchodzisz do dzrwi z znakiem zapytania")
                                    print(40*"-")
-                                   print("A - 1")
-                                   print("B - 2")
-                                   print("C - 3")
-                                   taka = input().upper()
-                                   if taka == 'A' and jakipokoj1 >= 1 and jakipokoj1 <= 2:
-                                                        print("wchodzisz do dzrwi z znakiem zapytania")
-                                                        print(40*"-")
-                                                        event()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'A' and jakipokoj1 >= 3 and jakipokoj1 <= 4:
-                                                        print("wchodzisz do pokoju z znakiem skarbu")
-                                                        print(40*"-")
-                                                        skarbpokoj()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'A' and jakipokoj1 >= 5 and jakipokoj1 <= 9:
-                                                        print("wchodisz do pokoju z czaszka")
-                                                        print(40*"-")
-                                                        walkazpot()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'A' and jakipokoj1 == 10 :
-                                                        print("wchodisz do sklepu")
-                                                        print(40*"-")
-                                                        sklep()
-                                   if taka == 'B' and jakipokoj2 >= 1 and jakipokoj2 <= 2:
-                                                        print("wchodzisz do dzrwi z znakiem zapytania")
-                                                        print(40*"-")
-                                                        event()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'B' and jakipokoj2 >= 3 and jakipokoj2 <= 4:
-                                                        print("wchodzisz do pokoju z znakiem skarbu")
-                                                        print(40*"-")
-                                                        skarbpokoj()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'B' and jakipokoj2 >= 5 and jakipokoj2 <= 9:
-                                                        print("wchodisz do pokoju z czaszka")
-                                                        print(40*"-")
-                                                        walkazpot()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'B' and jakipokoj2 == 10 :
-                                                        print("wchodisz do sklepu")
-                                                        print(40*"-")
-                                                        sklep()
-                                   if taka == 'C' and jakipokoj3 >= 1 and jakipokoj2 <= 2:
-                                                        print("wchodzisz do dzrwi z znakiem zapytania")
-                                                        print(40*"-")
-                                                        event()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'C' and jakipokoj3 >= 3 and jakipokoj3 <= 4:
-                                                        print("wchodzisz do pokoju z znakiem skarbu")
-                                                        print(40*"-")
-                                                        skarbpokoj()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'C' and jakipokoj3 >= 5 and jakipokoj3 <= 9:
-                                                        print("wchodisz do pokoju z czaszka")
-                                                        print(40*"-")
-                                                        walkazpot()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'C' and jakipokoj3 == 10 :
-                                                        print("wchodisz do sklepu")
-                                                        print(40*"-")
-                                                        sklep()
+                                   event()
+                                   break
+                     elif taka == 'A' and jakipokoj1 >= 3 and jakipokoj1 <= 4:
+                                   print("wchodzisz do pokoju z znakiem skarbu")
+                                   print(40*"-")
+                                   skarbpokoj()
+                                   break
+                     elif taka == 'A' and jakipokoj1 >= 5 and jakipokoj1 <= 9:
+                                   print("wchodisz do pokoju z czaszka")
+                                   print(40*"-")
+                                   walkazpot()
+                                   break
+                     elif taka == 'A' and jakipokoj1 == 10 :
+                                   print("wchodisz do sklepu")
+                                   print(40*"-")
+                                   sklep()
+                                   break
+                     if taka == 'B' and jakipokoj2 >= 1 and jakipokoj2 <= 2:
+                                   print("wchodzisz do dzrwi z znakiem zapytania")
+                                   print(40*"-")
+                                   event()
+                                   break
+                     elif taka == 'B' and jakipokoj2 >= 3 and jakipokoj2 <= 4:
+                                   print("wchodzisz do pokoju z znakiem skarbu")
+                                   print(40*"-")
+                                   skarbpokoj()
+                                   break
+                     elif taka == 'B' and jakipokoj2 >= 5 and jakipokoj2 <= 9:
+                                   print("wchodisz do pokoju z czaszka")
+                                   print(40*"-")
+                                   walkazpot()
+                                   break
+                     elif taka == 'B' and jakipokoj2 == 10 :
+                                   print("wchodisz do sklepu")
+                                   print(40*"-")
+                                   sklep()
+                                   break
+                     if taka == 'C':
+                                   print("odpoczywasz (+10 hp, +10 mp)")
+                                   print(40*"-")
+                                   przedmioty.hp += 10
+                                   przedmioty.mp += 10
+                                   if przedmioty.hp > przedmioty.maxhp:
+                                          przedmioty.hp = przedmioty.maxhp
+                                   if przedmioty.mp > przedmioty.maxmp:
+                                          przedmioty.mp = przedmioty.maxmp
+                                   czypotworodp = randint(1,5)
+                                   if czypotworodp == 1:
+                                          walkazpot()
+                                          if przedmioty.hp <= 0:
+                                                 break
 
 
+                                   continue
 
                      elif taka == 'H' and potkihp > 0:
                                    przedmioty.hp += 40
                                    if przedmioty.hp > przedmioty.maxhp:
                                           przedmioty.hp = przedmioty.maxhp
                                    potkihp -= 1
-                                   taka = input().upper()
-                                   if taka == 'A' and jakipokoj1 >= 1 and jakipokoj1 <= 2:
-                                                        print("wchodzisz do dzrwi z znakiem zapytania")
-                                                        print(40*"-")
-                                                        event()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'A' and jakipokoj1 >= 3 and jakipokoj1 <= 4:
-                                                        print("wchodzisz do pokoju z znakiem skarbu")
-                                                        print(40*"-")
-                                                        skarbpokoj()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'A' and jakipokoj1 >= 5 and jakipokoj1 <= 9:
-                                                        print("wchodisz do pokoju z czaszka")
-                                                        print(40*"-")
-                                                        walkazpot()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'A' and jakipokoj1 == 10 :
-                                                        print("wchodisz do sklepu")
-                                                        print(40*"-")
-                                                        sklep()
-                                   if taka == 'B' and jakipokoj2 >= 1 and jakipokoj2 <= 2:
-                                                        print("wchodzisz do dzrwi z znakiem zapytania")
-                                                        print(40*"-")
-                                                        event()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'B' and jakipokoj2 >= 3 and jakipokoj2 <= 4:
-                                                        print("wchodzisz do pokoju z znakiem skarbu")
-                                                        print(40*"-")
-                                                        skarbpokoj()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'B' and jakipokoj2 >= 5 and jakipokoj2 <= 9:
-                                                        print("wchodisz do pokoju z czaszka")
-                                                        print(40*"-")
-                                                        walkazpot()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'B' and jakipokoj2 == 10 :
-                                                        print("wchodisz do sklepu")
-                                                        print(40*"-")
-                                                        sklep()
-                                   if taka == 'C' and jakipokoj3 >= 1 and jakipokoj2 <= 2:
-                                                        print("wchodzisz do dzrwi z znakiem zapytania")
-                                                        print(40*"-")
-                                                        event()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'C' and jakipokoj3 >= 3 and jakipokoj3 <= 4:
-                                                        print("wchodzisz do pokoju z znakiem skarbu")
-                                                        print(40*"-")
-                                                        skarbpokoj()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'C' and jakipokoj3 >= 5 and jakipokoj3 <= 9:
-                                                        print("wchodisz do pokoju z czaszka")
-                                                        print(40*"-")
-                                                        walkazpot()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'C' and jakipokoj3 == 10 :
-                                                        print("wchodisz do sklepu")
-                                                        print(40*"-")
-                                                        sklep()
-
+                                   continue
+                            
                      elif taka == 'M' and potkimp > 0:
                                    przedmioty.mp += 70
                                    if przedmioty.mp > przedmioty.maxmp:
                                           przedmioty.mp = przedmioty.maxmp
                                    potkimp -= 1
-                                   taka = input().upper()
-                                   if taka == 'A' and jakipokoj1 >= 1 and jakipokoj1 <= 2:
-                                                        print("wchodzisz do dzrwi z znakiem zapytania")
-                                                        print(40*"-")
-                                                        event()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'A' and jakipokoj1 >= 3 and jakipokoj1 <= 4:
-                                                        print("wchodzisz do pokoju z znakiem skarbu")
-                                                        print(40*"-")
-                                                        skarbpokoj()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'A' and jakipokoj1 >= 5 and jakipokoj1 <= 9:
-                                                        print("wchodisz do pokoju z czaszka")
-                                                        print(40*"-")
-                                                        walkazpot()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'A' and jakipokoj1 == 10 :
-                                                        print("wchodisz do sklepu")
-                                                        print(40*"-")
-                                                        sklep()
-                                   if taka == 'B' and jakipokoj2 >= 1 and jakipokoj2 <= 2:
-                                                        print("wchodzisz do dzrwi z znakiem zapytania")
-                                                        print(40*"-")
-                                                        event()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'B' and jakipokoj2 >= 3 and jakipokoj2 <= 4:
-                                                        print("wchodzisz do pokoju z znakiem skarbu")
-                                                        print(40*"-")
-                                                        skarbpokoj()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'B' and jakipokoj2 >= 5 and jakipokoj2 <= 9:
-                                                        print("wchodisz do pokoju z czaszka")
-                                                        print(40*"-")
-                                                        walkazpot()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'B' and jakipokoj2 == 10 :
-                                                        print("wchodisz do sklepu")
-                                                        print(40*"-")
-                                                        sklep()
-                                   if taka == 'C' and jakipokoj3 >= 1 and jakipokoj2 <= 2:
-                                                        print("wchodzisz do dzrwi z znakiem zapytania")
-                                                        print(40*"-")
-                                                        event()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'C' and jakipokoj3 >= 3 and jakipokoj3 <= 4:
-                                                        print("wchodzisz do pokoju z znakiem skarbu")
-                                                        print(40*"-")
-                                                        skarbpokoj()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'C' and jakipokoj3 >= 5 and jakipokoj3 <= 9:
-                                                        print("wchodisz do pokoju z czaszka")
-                                                        print(40*"-")
-                                                        walkazpot()
-                                                        if przedmioty.hp <= 0:
-                                                               return 0
-                                   elif taka == 'C' and jakipokoj3 == 10 :
-                                                        print("wchodisz do sklepu")
-                                                        print(40*"-")
-                                                        sklep()
+                                   continue
+                                   
+              elif lpok == 3:
+                            print("co robisz?")
+                            print(40*"-")
+                            print("A - wchodzisz do 1 drzwi")
+                            print("B - wchodzisz do 2 drzwi")
+                            print("C - wchodzisz do 3 drzwi")
+                            print("D - odpoczywasz (20 procent szansy na atak potwora)")
+                            if potkihp > 0:
+                                   print("H - pijesz potke hp")
+                            if potkimp > 0:
+                                   print("M - pijesz potke mp")
+                            taka = input().upper()
+                            if taka == 'A' and jakipokoj1 >= 1 and jakipokoj1 <= 2:
+                                                 print("wchodzisz do dzrwi z znakiem zapytania")
+                                                 print(40*"-")
+                                                 event()
+                                                 break
+                            elif taka == 'A' and jakipokoj1 >= 3 and jakipokoj1 <= 4:
+                                                 print("wchodzisz do pokoju z znakiem skarbu")
+                                                 print(40*"-")
+                                                 skarbpokoj()
+                                                 break
+                            elif taka == 'A' and jakipokoj1 >= 5 and jakipokoj1 <= 9:
+                                                 print("wchodisz do pokoju z czaszka")
+                                                 print(40*"-")
+                                                 walkazpot()
+                                                 break
+                            elif taka == 'A' and jakipokoj1 == 10 :
+                                                 print("wchodisz do sklepu")
+                                                 print(40*"-")
+                                                 sklep()
+                                                 break
+                            elif taka == 'B' and jakipokoj2 >= 1 and jakipokoj2 <= 2:
+                                                 print("wchodzisz do dzrwi z znakiem zapytania")
+                                                 print(40*"-")
+                                                 event()
+                                                 break
+                            elif taka == 'B' and jakipokoj2 >= 3 and jakipokoj2 <= 4:
+                                                 print("wchodzisz do pokoju z znakiem skarbu")
+                                                 print(40*"-")
+                                                 skarbpokoj()
+                                                 break
+                            elif taka == 'B' and jakipokoj2 >= 5 and jakipokoj2 <= 9:
+                                                 print("wchodisz do pokoju z czaszka")
+                                                 print(40*"-")
+                                                 walkazpot()
+                                                 break
+                            elif taka == 'B' and jakipokoj2 == 10 :
+                                                 print("wchodisz do sklepu")
+                                                 print(40*"-")
+                                                 sklep()
+                                                 break
+                            elif taka == 'C' and jakipokoj3 >= 1 and jakipokoj3 <= 2:
+                                                 print("wchodzisz do dzrwi z znakiem zapytania")
+                                                 print(40*"-")
+                                                 event()
+                                                 break
+                            elif taka == 'C' and jakipokoj3 >= 3 and jakipokoj3 <= 4:
+                                                 print("wchodzisz do pokoju z znakiem skarbu")
+                                                 print(40*"-")
+                                                 skarbpokoj()
+                                                 break
+                            elif taka == 'C' and jakipokoj3 >= 5 and jakipokoj3 <= 9:
+                                                 print("wchodisz do pokoju z czaszka")
+                                                 print(40*"-")
+                                                 walkazpot()
+                                                 break
+                            elif taka == 'C' and jakipokoj3 == 10 :
+                                                 print("wchodisz do sklepu")
+                                                 print(40*"-")
+                                                 sklep()
+                                                 break
+                            
+                            elif taka == 'D':
+                                          print("odpoczywasz (+10 hp, +10 mp)")
+                                          print(40*"-")
+                                          przedmioty.hp += 10
+                                          przedmioty.mp += 10
+                                          if przedmioty.hp > przedmioty.maxhp:
+                                                 przedmioty.hp = przedmioty.maxhp
+                                          if przedmioty.mp > przedmioty.maxmp:
+                                                 przedmioty.mp = przedmioty.maxmp
+                                          czypotworodp = randint(1,5)
+                                          if czypotworodp == 1:
+                                                 walkazpot()
+                                                 if przedmioty.hp <= 0:
+                                                         break
+
+
+                                          continue
+                                          
+
+
+                            elif taka == 'H' and potkihp > 0:
+                                          przedmioty.hp += 40
+                                          if przedmioty.hp > przedmioty.maxhp:
+                                                 przedmioty.hp = przedmioty.maxhp
+                                          potkihp -= 1
+                                          continue
+                                          
+
+                            elif taka == 'M' and potkimp > 0:
+                                          przedmioty.mp += 70
+                                          if przedmioty.mp > przedmioty.maxmp:
+                                                 przedmioty.mp = przedmioty.maxmp
+                                          potkimp -= 1
+                                          continue
+                                          
 # -------------------------------------------------------
 for i in range(30):
     ilepokijakpok()
