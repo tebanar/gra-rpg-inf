@@ -1171,7 +1171,7 @@ def ilepokijakpok():
        lijakpok()
        while True:
               if lpok == 1:
-                     print(f"masz {przedmioty.hp}/{przedmioty.maxhp} hp , {przedmioty.mp}/{przedmioty.maxmp} mp, {przedmioty.wiedz} wiedzy, {przedmioty.hajs} hajsu, {potkihp} potek hp i {potkimp} potek mp")
+                     print(f"masz {przedmioty.hp}/{przedmioty.maxhp} hp , {przedmioty.mp}/{przedmioty.maxmp} mp, {przedmioty.wiedz} wiedzy,b {przedmioty.hajs} hajsu, {potkihp} potek hp i {potkimp} potek mp")
                      print(40*"-")
                      print("czy wchodzisz do nich?")
                      print(40*"-")
