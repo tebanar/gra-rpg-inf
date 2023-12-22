@@ -1,14 +1,14 @@
 import definicje  
 ksiazka1 = {
-    "nazwa" : "jak ukrasc ksiezyc",
+    "nazwa" : "jebie ci matke jebana kurwo twój stary wsadza ci chuja w dupe",
     "cena": 30, 
     "id" : 123423443 }
 ksiazka2 = {
-    "nazwa" : "beton",
+    "nazwa" : "zabij się kurwo",
     "cena": 35, 
     "id" : 12342134743 }
 ksiazka3 = {
-    "nazwa" : "KYS",
+    "nazwa" : "zabij sie żydzie jebany w dupe przez chuja twojego starego",
     "cena": 20, 
     "id" : 12342676543 }
 lista = [ksiazka1, ksiazka2, ksiazka3]
